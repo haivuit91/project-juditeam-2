@@ -68,6 +68,15 @@
                             <button type="reset" class="btn btn-warning" style="margin-top:10px" name="action">Làm lại</button>
                         </div>
                     </div>  
+                    <div class="form-group">
+                        <div class="col-md-12" style="margin-top:5px">
+                            <div class="alert alert-warning">
+                                <label>
+                                    Thông Báo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
