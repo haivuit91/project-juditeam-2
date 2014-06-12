@@ -23,9 +23,10 @@ public class Post {
     private User user;
     private Category category;
     private boolean isActive;
-    
     private List<Comment> commentList = null;
-
+    private List<KinhNghiem> kinhNghiemList = null;
+    private List<HuongDan> huongDanList = null;
+    private List<BaiTap> baiTapList = null;
     public Post() {
         
     }
@@ -112,4 +113,29 @@ public class Post {
     public void setCommentList(List<Comment> commentList) {
         this.commentList = commentList;
     }
+
+    public List<KinhNghiem> getKinhNghiemList() {
+        return kinhNghiemList;
+    }
+
+    public void setKinhNghiemList(List<KinhNghiem> kinhNghiemList) {
+        this.kinhNghiemList = kinhNghiemList;
+    }
+
+    public List<HuongDan> getHuongDanList() {
+        return huongDanList;
+    }
+
+    public void setHuongDanList(List<HuongDan> huongDanList) {
+        this.huongDanList = huongDanList;
+    }
+
+    public List<BaiTap> getBaiTapList() {
+        return baiTapList;
+    }
+
+    public void setBaiTapList(List<BaiTap> baiTapList) {
+        this.baiTapList = baiTapList;
+    }
+    
 }

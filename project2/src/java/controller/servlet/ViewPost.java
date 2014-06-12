@@ -105,11 +105,19 @@ public class ViewPost extends HttpServlet {
         List<KinhNghiem> listKinhNghiem = kinhNghiemService.getKinhNghiemByPostID(postID);
         List<HuongDan> listHuongDan = huongDanService.getHuongDanByPostID(postID);
         List<Comment> listComment = commentService.getCommentByPostID(postID);
-        request.setAttribute(Constants.LIST_BAI_TAP, listBaiTap);
-        request.setAttribute(Constants.LIST_HUONG_DAN, listHuongDan);
-        request.setAttribute(Constants.LIST_KINH_NGHIEM, listKinhNghiem);
-        request.setAttribute(Constants.LIST_COMMENT, listComment);
-        request.setAttribute(Constants.CURRENT_POST, post);
+        post.setBaiTapList(listBaiTap);
+        post.setHuongDanList(listHuongDan);
+        post.setKinhNghiemList(listKinhNghiem);
+        post.setCommentList(listComment);
+        
+        
+        System.err.println(post.getBaiTapList().get(0).getBaiTap());
+        
+//        request.setAttribute(Constants.LIST_BAI_TAP, listBaiTap);
+//        request.setAttribute(Constants.LIST_HUONG_DAN, listHuongDan);
+//        request.setAttribute(Constants.LIST_KINH_NGHIEM, listKinhNghiem);
+//        request.setAttribute(Constants.LIST_COMMENT, listComment);
+//        request.setAttribute(Constants.CURRENT_POST, post);
 
         request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
     }
