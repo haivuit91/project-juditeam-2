@@ -31,28 +31,31 @@ public class Page extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String page = request.getParameter("p");
-        switch (page) {
-            case "result-seacher":
-                request.setAttribute(util.Constants.PAGE, "result-seacher");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-            case "new-toppic":
-                request.setAttribute(util.Constants.PAGE, "new-toppic");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-            case "login-logout":
-                request.setAttribute(util.Constants.PAGE, "login-logout");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-            case "seach-cb":
-                request.setAttribute(util.Constants.PAGE, "seach-cb");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-           
+        if (page != null) {
+            switch (page) {
+                case "result-seacher":
+                    request.setAttribute(util.Constants.PAGE, "result-seacher");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+                case "new-toppic":
+                    request.setAttribute(util.Constants.PAGE, "new-toppic");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+                case "login-logout":
+                    request.setAttribute(util.Constants.PAGE, "login-logout");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+                case "seach-nc":
+                    request.setAttribute(util.Constants.PAGE, "seach-nc");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+            }
+        } else {
+            request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
         }
     }
 
