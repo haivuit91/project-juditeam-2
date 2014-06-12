@@ -32,57 +32,6 @@
                             <p>Danh mục: ${val.getCategory().categoryName}</p>
                         </td>
                         <td class="col-md-3"> ${val.datePost}</td>
-                        <td>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#1myModal">
-                                Thêm thông tin
-                            </button>
-                            <div class="modal fade" id="1myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="col-lg-12">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3><span class="glyphicon glyphicon-th"></span>&nbsp;Thêm thông tin</h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <form class="form-horizontal" role="form" action="/project2/teacher-post" method="post">
-                                                    <!--chưa đinh dang-->
-                                                    <input type="text" name="post_id" value="${val.postID}">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-3" >
-                                                            <label class="label label-info" style="padding: 5px;font-size:13px">Loại</label>
-                                                        </div>
-                                                        <div class="col-sm-9" >
-                                                            <select class="form-control" name="type">
-                                                                <option value="kinh_nghiem">Kinh nghiệm</option>
-                                                                <option value="bai_tap">Bài tập</option>
-                                                                <option value="huong_dan">Hướng dẫn</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <!--Nội Dung-->
-                                                    <div class="form-group">
-                                                        <div class="col-sm-3" >
-                                                            <label class="label label-info" style="padding: 5px;font-size:13px">Nội dung</label>
-                                                        </div>
-                                                        <div class="col-sm-9" >
-                                                            <input type="text" name="content" value=""  class="form-control" id="inputEmail3">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <div class="col-sm-6 col-sm-offset-6" >
-                                                            <button type="submit" value="add-info" name="action" class="btn btn-success">Thêm thông tin</button>
-                                                            &nbsp;
-                                                            <button type="reset" class="btn btn-warning">Clear</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
                     </tr>
                 </c:forEach>
             </table>
