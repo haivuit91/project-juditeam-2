@@ -32,25 +32,36 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="home.jsp">Trang chủ</a></li>
-                        <li><a href="/project2/Page?p=new-toppic">Tạo mới</a></li>
-                        <li><a href="/project2/Page?p=login-logout">Đăng nhập|Đăng ký</a></li>
-                        <li><a href="#contact">Thoát</a></li>
+                        <li class="active"><a href="/project2/index">Trang chủ</a></li>
+                            <c:if test="${current_user != null}">
+                                <li><a href="/project2/teacher-post?action=new-toppic">Tạo mới</a></li>
+                            </c:if>
+                            <c:if test="${current_user == null}">
+                                <li><a href="/project2/authen?action=login-logout">Đăng nhập|Đăng ký</a></li>
+                            </c:if>
+                            <c:if test="${current_user != null}">
+                                <li><a href="/project2/authen?action=logout">Thoát</a></li>
+                            </c:if>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
-
         </div>
         <!--Content Seacher-->
         <c:if test="${p == 'login' || p == null}">
             <%@include file="module/seach-cb.jsp" %>
         </c:if>
+        <c:if test="${p == 'seach-cb'}">
+            <%@include file="module/seach-cb.jsp" %>
+            <div class="container">
+                <%@include file="module/result-search.jsp" %>
+            </div>
+        </c:if>
         <c:if test="${p == 'seach-nc'}">
             <%@include file="module/seach-nc.jsp" %>
             <div class="container">
-                <%@include file="module/result-seacher.jsp" %>
+                <%@include file="module/result-search.jsp" %>
             </div>
-            </c:if>
+        </c:if>
 
         <!--Content Information-->
         <div class="container">
@@ -62,7 +73,7 @@
                     <%@include file="module/login-logout.jsp" %>
                 </c:if>     
                 <c:if test="${p == 'login' || p == null}">
-                    <%@include file="module/result-seacher.jsp" %>
+                    <%@include file="module/result-search.jsp" %>
                 </c:if>
             </div>
         </div>
