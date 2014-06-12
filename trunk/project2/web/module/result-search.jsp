@@ -15,7 +15,7 @@
     <body>
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading" style="text-align: center;color:red">Trang chủ</div>
+            <div class="panel-heading" style="text-align: center;color:red"> ${result_search.size()!= '0' ? result_search.size():'Không tìm thấy'} kết quả  cho từ khóa ${key_search}</div>
             <div class="panel-body" style="font-weight: bold">
                 <div class="col-md-9">Tất cả chủ đề</div>
                 <div class="col-md-3">Cập nhật mới nhất</div>
