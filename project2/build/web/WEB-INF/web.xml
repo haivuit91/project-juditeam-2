@@ -4,9 +4,33 @@
         <servlet-name>Page</servlet-name>
         <servlet-class>controller.servlet.Page</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Authentication</servlet-name>
+        <servlet-class>controller.servlet.Authentication</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SerarchServlet</servlet-name>
+        <servlet-class>controller.servlet.SerarchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherPost</servlet-name>
+        <servlet-class>controller.servlet.TeacherPost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
-        <url-pattern>/Page</url-pattern>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Authentication</servlet-name>
+        <url-pattern>/authen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SerarchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherPost</servlet-name>
+        <url-pattern>/teacher-post</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,6 +38,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 </web-app>
