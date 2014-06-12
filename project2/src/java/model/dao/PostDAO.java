@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,6 +35,7 @@ public class PostDAO implements PostDAOService {
         }
         return postDAO;
     }
+
     @Override
     public List<Post> getPosts() {
         List<Post> listPost = new ArrayList<>();
@@ -181,18 +183,13 @@ public class PostDAO implements PostDAOService {
 
     @Override
     public List<Post> searchByTitle(String key) {
-        String sql = "";
         List<Post> listPost = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            
-            switch (key) {
-                case "title":
-                    sql = "select * from tbl_post where title like '%" + key + "%' ";
-                    break;
-            }
-            PreparedStatement sm = conn.prepareStatement(sql);
-            ResultSet rs = sm.executeQuery();
+            String sql = "select * from tbl_post where title like '%"+key+"%' ";
+            Statement sm = conn.createStatement();
+            ResultSet rs = sm.executeQuery(sql);
+            System.out.println(sql);
             while (rs.next()) {
                 Post post = new Post();
                 post.setTitle(rs.getString("title"));
@@ -207,7 +204,7 @@ public class PostDAO implements PostDAOService {
                 listPost.add(post);
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println(ex.toString());
+            System.out.println(ex.getStackTrace());
         }
         return listPost;
     }

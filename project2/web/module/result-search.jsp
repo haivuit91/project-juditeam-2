@@ -15,7 +15,7 @@
     <body>
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">Trang chủ</div>
+            <div class="panel-heading" style="text-align: center;color:red">Trang chủ</div>
             <div class="panel-body" style="font-weight: bold">
                 <div class="col-md-9">Tất cả chủ đề</div>
                 <div class="col-md-3">Cập nhật mới nhất</div>
@@ -26,10 +26,10 @@
                 <c:forEach items="${result_search}" var="val" >
                     <tr>
                         <td class="col-md-9">
-                            <p><a href="#">Các dạng bài tập tích phân</a></p>
-                            <p>Danh mục: lý thuyết</p>
+                            <p><a href="#">${val.title}</a></p>
+                            <p>Danh mục: ${val.getCategory().categoryName}</p>
                         </td>
-                        <td class="col-md-3">1 tuần trước</td>
+                        <td class="col-md-3"> ${val.datePost}</td>
                     </tr>
                 </c:forEach>
             </table>
