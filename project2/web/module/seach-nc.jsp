@@ -24,41 +24,41 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nhập tên">
+                                    <input name="title" type="text" class="form-control" placeholder="Nhập tên">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nhập công thức">
+                                    <input name="content" type="text" class="form-control" placeholder="Nhập công thức">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" >
                             <div class="col-md-12" style="margin-top:5px;">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nhập hướng dẫn">
+                                    <input name="huong-dan" type="text" class="form-control" placeholder="Nhập hướng dẫn">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nhập bài tập">
+                                    <input name="bai-tap" type="text" class="form-control" placeholder="Nhập bài tập">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" >
-                            <div class="col-md-12"style="margin-top:5px;">
+                            <div class="col-md-12" style="margin-top:5px;">
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" placeholder="Nhập kinh nghiệm">
+                                    <input name="kinh-nghiem" type="text" class="form-control" placeholder="Nhập kinh nghiệm">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" >
                             <div class="col-md-12" style="margin-top:5px;">
                                 <div class="col-md-2 col-md-offset-10">
-                                    <button type="submit" name="action" value="search-cb" class="btn btn-primary">Tìm kiếm </button>
+                                    <button type="submit" name="action" value="search-nc" class="btn btn-primary">Tìm kiếm </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- /input-group -->
                     <div class="col-md-1">
-                        <a href="/project2/home.jsp"  class="label label-success" style="font-size:16;padding:10px">Tìm kiếm cơ bản </a>
+                        <a href="/project2/index"  class="label label-success" style="font-size:16;padding:10px">Tìm kiếm cơ bản </a>
                     </div>
                 </div>
             </div>

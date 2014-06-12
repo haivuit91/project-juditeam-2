@@ -14,11 +14,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.BaiTapDAO;
 import model.dao.CategoryDAO;
+import model.dao.HuongDanDAO;
+import model.dao.KinhNghiemDAO;
 import model.dao.PostDAO;
+import model.dao.service.BaiTapDAOService;
 import model.dao.service.CategoryDAOService;
+import model.dao.service.HuongDanDAOService;
+import model.dao.service.KinhNghiemDAOService;
 import model.dao.service.PostDAOService;
+import model.entities.BaiTap;
 import model.entities.Category;
+import model.entities.HuongDan;
+import model.entities.KinhNghiem;
 import model.entities.Post;
 import model.entities.User;
 import util.Constants;
@@ -72,10 +81,39 @@ public class TeacherPost extends HttpServlet {
                 case "edit-post":
                     editPost(request, response);
                     break;
+                case "add-info":
+                    addInfo(request, response);
+                    break;
             }
         }
     }
-
+    private  void addInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PostDAOService postService = PostDAO.getInstance();
+        String type = request.getParameter("type");
+        String content = request.getParameter("content");
+        int postID = Integer.valueOf(request.getParameter("post_id"));
+      
+        Post post = postService.getPostByID(postID);
+        Boolean isSuccess = false;
+        switch(type){
+            case "kinh_nghiem":
+                KinhNghiem kinhNghiem = new KinhNghiem(0, content, post, true);
+                KinhNghiemDAOService kinhNghiemService = KinhNghiemDAO.getInstance();
+                isSuccess = kinhNghiemService.insertKinhNgiem(kinhNghiem);
+                break;
+            case "huong_dan":
+                HuongDan huongDan = new HuongDan(0, content, post, true);
+                HuongDanDAOService huongDanService = HuongDanDAO.getInstance();
+                isSuccess = huongDanService.insertHuongDan(huongDan);
+                break;
+            case "bai_tap":
+                BaiTap baiTap = new BaiTap(0,content, post, true);
+                BaiTapDAOService baiTapService = BaiTapDAO.getInstance();
+                isSuccess = baiTapService.insertBaiTap(baiTap);
+                break;
+        }
+        response.sendRedirect("/project2/index");
+    }
     private void addNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CategoryDAOService categoryService = CategoryDAO.getInstance();
         PostDAOService postService = PostDAO.getInstance();

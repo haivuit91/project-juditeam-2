@@ -96,7 +96,7 @@ public class Authentication extends HttpServlet {
         String password = request.getParameter("password");
         User user = userService.checkLogin(userName, password);
         if (user == null) {
-            request.setAttribute(Constants.MSG_RESULT, "Đăng nhập thất bại!");
+            request.setAttribute(Constants.RESULT_LOGIN, "Đăng nhập thất bại!");
             request.setAttribute(Constants.PAGE, "login-logout");
             request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
         } else {
@@ -116,7 +116,7 @@ public class Authentication extends HttpServlet {
             Role role = roleService.getRoleByID(roleID);
             User user = new User(0, userName, MD5.encryptMD5(pwd), "", true, Date.valueOf("2014-06-06"), "email", "address", role, true);
             if (userService.exitUser(user.getUserName())) {
-                request.setAttribute(Constants.MSG_RESULT, "Tên đăng nhập đã tồn tại");
+                request.setAttribute(Constants.RESULT_SIGNUP, "Tên đăng nhập đã tồn tại");
                 requestLogin(request, response);
             } else {
                 if (!userService.insertUser(user)) {

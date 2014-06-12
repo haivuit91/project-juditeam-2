@@ -16,6 +16,10 @@
         <servlet-name>TeacherPost</servlet-name>
         <servlet-class>controller.servlet.TeacherPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewPost</servlet-name>
+        <servlet-class>controller.servlet.ViewPost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>TeacherPost</servlet-name>
         <url-pattern>/teacher-post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPost</servlet-name>
+        <url-pattern>/detail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
