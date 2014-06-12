@@ -4,6 +4,7 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,7 @@
         </style>
     </head>
     <body>
-        <form action="authen" name="login-logout" method="post">
+        <form action="authen" name="login" method="post">
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center">
@@ -30,7 +31,7 @@
                                 <label>Tên đăng nhập(*)</label>
                             </div>
                             <div class="col-md-12" >
-                                <input type="text" name="fullName" class="form-control" id="inputEmail3" >
+                                <input type="text" name="user_name" class="form-control" id="inputEmail3" >
                             </div>
                         </div>    
                         <!--Mật khẩu-->
@@ -39,7 +40,7 @@
                                 <label>Mật khẩu(*)</label>
                             </div>
                             <div class="col-md-12" >
-                                <input type="password" name="fullName" class="form-control" id="inputEmail3" >
+                                <input type="password" name="pwd" class="form-control" id="inputEmail3" >
                             </div>
                         </div> 
                         <!--Nhập lại mật khẩu-->
@@ -57,12 +58,10 @@
                                 <label>Bạn là ai?(*)</label>
                             </div>
                             <div class="col-md-12" >
-                                <select class="form-control" name="chucvu">
-                                    <option value="giaovien">Giáo viên</option>
-                                    <option value="hscap1">Học sinh cấp 1</option>
-                                    <option value="hscap2">Học sinh cấp 2</option>
-                                    <option value="hscap3">Học sinh cấp 3</option>
-                                    <option value="sinhvien">Sinh viên</option>
+                                <select class="form-control" name="role_id">
+                                    <c:forEach items="${list_role}" var="val" >
+                                        <option value="${val.roleID}" >${val.roleName}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                         </div> 
@@ -73,7 +72,9 @@
                         </div>
                     </div>              
                 </div>              
-            </div>              
+            </div>  
+        </form>
+        <form action="authen" name="signup" method="post">
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center">
@@ -86,7 +87,7 @@
                                 <label>Tên đăng nhập(*)</label>
                             </div>
                             <div class="col-md-12" >
-                                <input type="text" name="fullName" class="form-control" id="inputEmail3" >
+                                <input type="text" name="userName" class="form-control" id="inputEmail3" >
                             </div>
                         </div>    
                         <!--Mật khẩu-->
@@ -95,7 +96,7 @@
                                 <label>Mật khẩu(*)</label>
                             </div>
                             <div class="col-md-12" >
-                                <input type="password" name="fullName" class="form-control" id="inputEmail3" >
+                                <input type="password" name="password" class="form-control" id="inputEmail3" >
                             </div>
                         </div> 
 
