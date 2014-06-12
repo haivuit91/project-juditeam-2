@@ -70,6 +70,15 @@
                                 <button type="submit" value="signup" class="btn btn-primary" style="margin-top:10px" name="action">Đăng ký</button>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-md-12" style="margin-top:5px">
+                                <div class="alert alert-warning">
+                                    <label>
+                                        Thông Báo
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>              
                 </div>              
             </div>  
@@ -103,6 +112,15 @@
                         <div class="form-group">
                             <div class="col-md-2 col-md-offset-8">
                                 <button type="submit" value="login" class="btn btn-warning" style="margin-top:10px" name="action">Đăng Nhập</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12" style="margin-top:5px">
+                                <div class="alert alert-warning">
+                                    <label>
+                                        Thông Báo
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>              
