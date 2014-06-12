@@ -30,7 +30,7 @@ public class Constants {
     public static final String MSG_RESULT = "msgResult";
     public static final String PAGE = "p";
 
-    public static final String CURRENT_USER = "currentUser";
+    public static final String CURRENT_USER = "current_ser";
     
     public static final String TK_LIST = "tkList";
     public static final String DP_LIST = "dpList";
@@ -38,4 +38,8 @@ public class Constants {
     public static final String NPT_LIST = "nptList";
     
     public static final String TK = "tk";
+    public static final String ACTION = "action";
+    
+    
+    
 }
