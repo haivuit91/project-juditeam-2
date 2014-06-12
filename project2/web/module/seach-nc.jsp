@@ -14,8 +14,9 @@
     </head>
 
     <body>
-        <div class="jumbotron navbar-seach">
-            <div class="container">
+        <form action="search" name="search-nc">
+            <div class="jumbotron navbar-seach">
+                <div class="container">
                     <h3 style="text-align: center;font-size: 40px;font-weight:bold;color:white">Bạn cần tìm các bài tập toán học để ôn thi ?</h3>
                     <h5 style="text-align: center;font-size: 16px;font-weight: lighter;color:white">Nếu bạn cần hãy nhập từ khóa cần tìm và chúng tôi sẽ gợi ý cho bạn!</h5>
 
@@ -31,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group" >
-                            <div class="col-md-12"style="margin-top:5px;">
+                            <div class="col-md-12" style="margin-top:5px;">
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Nhập hướng dẫn">
                                 </div>
@@ -48,9 +49,9 @@
                             </div>
                         </div>
                         <div class="form-group" >
-                            <div class="col-md-12"style="margin-top:5px;">
+                            <div class="col-md-12" style="margin-top:5px;">
                                 <div class="col-md-2 col-md-offset-10">
-                                    <button type="button" class="btn btn-primary">Tìm kiếm </button>
+                                    <button type="submit" name="action" value="search-cb" class="btn btn-primary">Tìm kiếm </button>
                                 </div>
                             </div>
                         </div>
@@ -61,5 +62,6 @@
                     </div>
                 </div>
             </div>
+        </form>
     </body>
 </html>
