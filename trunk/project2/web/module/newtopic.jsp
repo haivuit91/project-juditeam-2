@@ -72,7 +72,7 @@
                         <div class="col-md-12" style="margin-top:5px">
                             <div class="alert alert-warning">
                                 <label>
-                                    Thông Báo
+                                    ${msgResult}
                                 </label>
                             </div>
                         </div>
