@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.PostDAO;
+import model.dao.service.PostDAOService;
 import sun.rmi.server.Dispatcher;
 import util.Constants;
 
@@ -46,8 +48,14 @@ public class SerarchServlet extends HttpServlet {
         }
         request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
     }
-    private  void searchCB(HttpServletRequest request, HttpServletResponse response){
+    private  void searchCB(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        PostDAOService postService = PostDAO.getInstance();
+        String keySearch = request.getParameter("key_search");
         request.setAttribute(Constants.PAGE,"seach-cb");
+        request.setAttribute(Constants.KEY_SEARCH, keySearch);
+        request.setAttribute(Constants.RESULT_SEARCH, postService.searchByTitle(keySearch));
+        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+        
     }
     private  void searchNC(HttpServletRequest request, HttpServletResponse response){
         request.setAttribute(Constants.PAGE,"seach-nc");
