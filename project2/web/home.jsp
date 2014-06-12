@@ -33,11 +33,15 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/project2/index">Trang chủ</a></li>
-                            <c:if test="${current-user != null}">
-                                <li><a href="/project2/index?p=new-toppic">Tạo mới</a></li>
+                            <c:if test="${current_user != null}">
+                                <li><a href="/project2/teacher-post?action=new-toppic">Tạo mới</a></li>
                             </c:if>
-                        <li><a href="/project2/index?p=login-logout">Đăng nhập|Đăng ký</a></li>
-                        <li><a href="#contact">Thoát</a></li>
+                            <c:if test="${current_user == null}">
+                                <li><a href="/project2/authen?action=login-logout">Đăng nhập|Đăng ký</a></li>
+                            </c:if>
+                            <c:if test="${current_user != null}">
+                                <li><a href="/project2/authen?action=logout">Thoát</a></li>
+                            </c:if>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

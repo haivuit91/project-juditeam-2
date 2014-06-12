@@ -4,6 +4,7 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,57 +23,15 @@
 
             <!-- Table -->
             <table class="table">
-                <tr>
-                    <td class="col-md-9">
-                        <p><a href="#">Các dạng bài tập tích phân</a></p>
-                        <p>Danh mục: lý thuyết</p>
-                    </td>
-                    <td class="col-md-3">1 tuần trước</td>
-                </tr>
-                <tr>
-                    <td class="col-md-9">
-                        <p><a href="#">Các dạng bài tập tích phân</a></p>
-                        <p>Danh mục: lý thuyết</p>
-                    </td>
-                    <td class="col-md-3">1 tuần trước</td>
-                </tr>
-                <tr>
-                    <td class="col-md-9">
-                        <p><a href="#">Các dạng bài tập tích phân</a></p>
-                        <p>Danh mục: lý thuyết</p>
-                    </td>
-                    <td class="col-md-3">1 tuần trước</td>
-                </tr>
-                <tr>
-                    <td class="col-md-9">
-                        <p><a href="#">Các dạng bài tập tích phân</a></p>
-                        <p>Danh mục: lý thuyết</p>
-                    </td>
-                    <td class="col-md-3">1 tuần trước</td>
-                </tr>
-                <tr>
-                    <td class="col-md-9">
-                        <p><a href="#">Các dạng bài tập tích phân</a></p>
-                        <p>Danh mục: lý thuyết</p>
-                    </td>
-                    <td class="col-md-3">1 tuần trước</td>
-                </tr>
-                <tr>
-                    <td class="col-md-9">
-                        <p><a href="#">Các dạng bài tập tích phân</a></p>
-                        <p>Danh mục: lý thuyết</p>
-                    </td>
-                    <td class="col-md-3">1 tuần trước</td>
-                </tr>
-                <tr>
-                    <td class="col-md-9">
-                        <p><a href="#">Các dạng bài tập tích phân</a></p>
-                        <p>Danh mục: lý thuyết</p>
-                    </td>
-
-
-                    <td class="col-md-3"> tháng trước</td>
-                </tr>
+                <c:forEach items="${result_search}" var="val" >
+                    <tr>
+                        <td class="col-md-9">
+                            <p><a href="#">Các dạng bài tập tích phân</a></p>
+                            <p>Danh mục: lý thuyết</p>
+                        </td>
+                        <td class="col-md-3">1 tuần trước</td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </body>
