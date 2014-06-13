@@ -20,7 +20,7 @@
                         <h3><span class="glyphicon glyphicon-align-left"></span> ${current_post.title} </h3>
                     </div>
                     <div class="panel-body">
-                        <textarea class="col-md-12" style="min-height:300px; ">${current_post.content}</textarea>
+                        <textarea disabled class="col-md-12" style="min-height:300px; ">${current_post.content}</textarea>
                     </div>
                 </div>
             </div>
