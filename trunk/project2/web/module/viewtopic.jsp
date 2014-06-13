@@ -3,7 +3,7 @@
     Created on : Jun 12, 2014, 4:23:47 PM
     Author     : Welcomes
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,35 +15,40 @@
     <body>
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading"style="background:#28a4c9;color: white" >
-                    <h3><span class="glyphicon glyphicon-align-left"></span> &nbsp;Tiêu đề:&nbsp;</h3>
+                <div class="panel-heading" style="background:#28a4c9;color: white" >
+                    <h3><span class="glyphicon glyphicon-align-left"></span> ${current_post.title} </h3>
                 </div>
                 <div class="panel-body">
-                    <textarea class="col-md-12" style="min-height:300px; ">Không Enter</textarea>
+                    <textarea class="col-md-12" style="min-height:300px; ">${current_post.content}</textarea>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading"style="background:#28a4c9;color: white" >
+                <div class="panel-heading" style="background:#28a4c9;color: white" >
                     <h3><span class="glyphicon glyphicon-user"></span> &nbsp;BÌNH LUẬN</h3>
                 </div>
-                <div class="panel-body">
-                    <div class="col-md-12">
-                        <textarea class="col-md-12" style="min-height:100px; "></textarea>
+                <form action="detail" name="comment" method="post">
+                    <input type="text" name="post_id" value="${current_post.postID}"/>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <textarea name="content" class="col-md-12" style="min-height:100px; "></textarea>
+                        </div>
+                        <div class="col-md-7 col-md-offset-5">
+                            <button name="action" value="add-comment" class="btn bg-primary" style="margin-top: 5px;">Gửi</button>
+                            <button class="btn bg-info" style="margin-top: 5px;">Nhập lại</button>
+                        </div>
+                        <!-- vong lap-->
+                        <c:forEach items="${current_post.getCommentList()}" var="val">
+                            <div class="col-md-12">
+                                <label class="label label-primary">${val.user.userName}</label>
+                            </div>
+                            <div class="col-md-12 alert alert-warning">
+                                <p class="alert-link">${val.content}</p>
+                            </div>
+                        </c:forEach>
                     </div>
-                    <div class="col-md-7 col-md-offset-5">
-                        <button class="btn bg-primary" style="margin-top: 5px;">Gửi</button>
-                        <button class="btn bg-info" style="margin-top: 5px;">Nhập lại</button>
-                    </div>
-                    <!-- vong lap-->
-                    <div class="col-md-12">
-                        <label class="label label-primary">username</label>
-                    </div>
-                    <div class="col-md-12 alert alert-warning">
-                        <p class="alert-link">Tôi là tôi hehe</p>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="col-md-8">
@@ -52,28 +57,28 @@
                     <!--START Nut them thong tin-->
                     <!--cHO NAY NE CON-->
                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#1myModal">
-                        Thêm thông tin địa phương
+                        Thêm thông tin
                     </button>
-                    <div class="modal fade" id="1myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3><span class="glyphicon glyphicon-plus"></span>&nbsp;THÊM THÔNG TIN ĐỊA PHƯƠNG</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form" action="/project1/dpmanage" method="post">
-                                            
+                    <form action="teacher-post" name="info" method="post">
+                        <div class="modal fade" id="1myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3><span class="glyphicon glyphicon-plus"></span>&nbsp;THÊM THÔNG TIN</h3>
+                                        </div>
+                                        <input type="text" name="post_id" value="${current_post.postID}"/>
+                                        <div class="panel-body">
                                             <!--Người phụ trách-->
                                             <div class="form-group">
                                                 <div class="col-sm-3" >
                                                     <label class="label label-info" style="padding: 5px;font-size:13px">Loại</label>
                                                 </div>
                                                 <div class="col-sm-9" >
-                                                    <select class="form-control" name="nguoiPhuTrach">
-                                                        <option>abc</option>
-                                                        <option>nguyen</option>
-                                                        <option>Duy</option>
+                                                    <select class="form-control" name="type">
+                                                        <option value="bai_tap">Bài tập</option>
+                                                        <option value="huong_dan">Hướng dẫn</option>
+                                                        <option value="kinh_nghiem">Kinh nghiệm</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -83,27 +88,23 @@
                                                     <label class="label label-info" style="padding: 5px;font-size:13px">Nội dung</label>
                                                 </div>
                                                 <div class="col-sm-9" >
-                                                    <textarea class="col-md-12"style="min-height:100px"></textarea>
+                                                    <textarea name="content" class="col-md-12" style="min-height:100px"></textarea>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <div class="col-sm-6 col-sm-offset-6" >
-                                                    <input type="submit" value="Thêm thông tin" name="submit" class="btn btn-success"/>
+                                                    <button value="add-info" name="action" class="btn btn-success">Thêm</button>
                                                     &nbsp;
                                                     <button type="reset" class="btn btn-warning">Clear</button>
                                                 </div>
                                             </div>
-
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <!--kET THUC NE CON-->                                   
-
-
                     <!--END Nut them thong tin-->
                 </div>
             </div>
@@ -114,23 +115,30 @@
                             <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
                         </div>
                         <div class="panel-body">
-                            <p><label>Thong tin 1</label></p>
-                            <p><label>Thong tin 1</label></p>
-                            <p><label>Thong tin 1</label></p>
-                            <p><label>Thong tin 1</label></p>
+                            <c:forEach items="${current_post.getBaiTapList()}" var="val">
+                                <p><label>${val.baiTap}</label></p>
+                            </c:forEach>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="panel-heading" style="background: #28a4c9;color:wheat">
                             <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
                         </div>
-                        <div class="panel-body">Than bai</div>
+                        <div class="panel-body">
+                            <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
+                                <p><label>${val.kinhNghiem}</label></p>
+                            </c:forEach>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Nội dung</h4>
+                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
                         </div>
-                        <div class="panel-body">Than bai</div>
+                        <div class="panel-body">
+                            <c:forEach items="${current_post.getHuongDanList()}" var="val">
+                                <p><label>${val.huongDan}</label></p>
+                            </c:forEach>
+                        </div>
                     </div>
                 </div>
             </div>
