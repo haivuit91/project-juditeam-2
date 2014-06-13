@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <form action="search" name="search-nc">
+        <form action="search" name="search-nc" onsubmit="return checkSearchNC();">
             <div class="jumbotron navbar-seach">
                 <div class="container">
                     <h3 style="text-align: center;font-size: 40px;font-weight:bold;color:white">Bạn cần tìm các bài tập toán học để ôn thi ?</h3>
@@ -24,27 +24,27 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                    <input name="title" type="text" class="form-control" placeholder="Nhập tên">
+                                    <input id="title" name="title" type="text" class="form-control" placeholder="Nhập tên">
                                 </div>
                                 <div class="col-md-6">
-                                    <input name="content" type="text" class="form-control" placeholder="Nhập công thức">
+                                    <input id="content" name="content" type="text" class="form-control" placeholder="Nhập công thức">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" >
                             <div class="col-md-12" style="margin-top:5px;">
                                 <div class="col-md-6">
-                                    <input name="huong-dan" type="text" class="form-control" placeholder="Nhập hướng dẫn">
+                                    <input id="huong_dan" name="huong-dan" type="text" class="form-control" placeholder="Nhập hướng dẫn">
                                 </div>
                                 <div class="col-md-6">
-                                    <input name="bai-tap" type="text" class="form-control" placeholder="Nhập bài tập">
+                                    <input id="bai_tap" name="bai-tap" type="text" class="form-control" placeholder="Nhập bài tập">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" >
                             <div class="col-md-12" style="margin-top:5px;">
                                 <div class="col-md-12">
-                                    <input name="kinh-nghiem" type="text" class="form-control" placeholder="Nhập kinh nghiệm">
+                                    <input id="kinh_nghiem" name="kinh-nghiem" type="text" class="form-control" placeholder="Nhập kinh nghiệm">
                                 </div>
                             </div>
                         </div>

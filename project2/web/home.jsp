@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang chủ</title>
     </head>
+    <script src="js/script.js" type="text/javascript"></script>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <style>
 
