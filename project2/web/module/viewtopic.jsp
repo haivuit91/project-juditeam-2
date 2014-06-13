@@ -87,53 +87,53 @@
                             <!--END Nut them thong tin-->
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="col-md-6" style="background:#28a4c9;padding: 5px;color:wheat">
-                             NGƯỜI POST:&nbsp;
-                            <label>
-                                ${current_post.user.userName}
-                            </label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6" style="background:#28a4c9;padding: 5px;color:wheat">
+                    NGƯỜI POST:&nbsp;
+                    <label>
+                        ${current_post.user.userName}
+                    </label>
+                </div>
+                <div class="col-md-6" style="background:#28a4c9;padding: 5px;color:wheat">
+                    NGÀY POST:&nbsp;
+                    <label>
+                        ${current_post.datePost}
+                    </label>
+                </div>
+            </div>                           
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="">
+                        <div class="col-md-4">
+                            <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                                <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
+                            </div>
+                            <div class="panel-body">
+                                <c:forEach items="${current_post.getBaiTapList()}" var="val">
+                                    <p><label>${val.baiTap}</label></p>
+                                </c:forEach>
+                            </div>
                         </div>
-                        <div class="col-md-6" style="background:#28a4c9;padding: 5px;color:wheat">
-                            NGÀY POST:&nbsp;
-                            <label>
-                                ${current_post.datePost}
-                            </label>
+                        <div class="col-md-4">
+                            <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                                <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
+                            </div>
+                            <div class="panel-body">
+                                <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
+                                    <p><label>${val.kinhNghiem}</label></p>
+                                </c:forEach>
+                            </div>
                         </div>
-                    </div>                           
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body" style="">
-                                <div class="col-md-4">
-                                    <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                        <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
-                                    </div>
-                                    <div class="panel-body">
-                                        <c:forEach items="${current_post.getBaiTapList()}" var="val">
-                                            <p><label>${val.baiTap}</label></p>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                        <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
-                                    </div>
-                                    <div class="panel-body">
-                                        <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
-                                            <p><label>${val.kinhNghiem}</label></p>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                        <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
-                                    </div>
-                                    <div class="panel-body">
-                                        <c:forEach items="${current_post.getHuongDanList()}" var="val">
-                                            <p><label>${val.huongDan}</label></p>
-                                        </c:forEach>
-                                    </div>
-                                </div>
+                        <div class="col-md-4">
+                            <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                                <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
+                            </div>
+                            <div class="panel-body">
+                                <c:forEach items="${current_post.getHuongDanList()}" var="val">
+                                    <p><label>${val.huongDan}</label></p>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
