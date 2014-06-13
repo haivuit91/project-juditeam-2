@@ -110,9 +110,9 @@
                             <div class="panel-heading" style="background: #28a4c9;color:wheat">
                                 <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="font-size:12px">
                                 <c:forEach items="${current_post.getBaiTapList()}" var="val">
-                                    <p><label>${val.baiTap}</label></p>
+                                    <p><label style="font-family : sans-serif;border-bottom:  2px solid #28a4c9">${val.baiTap}</label></p>
                                 </c:forEach>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="panel-body">
                                 <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
-                                    <p><label>${val.kinhNghiem}</label></p>
+                                    <p><label style="font-family : sans-serif;border-bottom:  2px solid #28a4c9">${val.kinhNghiem}</label></p>
                                 </c:forEach>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="panel-body">
                                 <c:forEach items="${current_post.getHuongDanList()}" var="val">
-                                    <p><label>${val.huongDan}</label></p>
+                                    <p><label style="font-family : sans-serif;border-bottom:  2px solid #28a4c9">${val.huongDan}</label></p>
                                 </c:forEach>
                             </div>
                         </div>
