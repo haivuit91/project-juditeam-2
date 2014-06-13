@@ -36,7 +36,7 @@
                                 </button>
                             </c:if>
                             <c:if test="${current_user.userID != current_post.getUser().userID}">
-                                Bạn không có quyền thêm thông tin
+                                Bạn không có quền thêm thông tin cho bài viết này!
                             </c:if>
                             <form action="teacher-post" name="info" method="post">
                                 <div class="modal fade" id="1myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -87,36 +87,52 @@
                             <!--END Nut them thong tin-->
                         </div>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-body" style="">
-                            <div class="col-md-4">
-                                <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                    <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="background:#28a4c9;padding: 5px;color:wheat">
+                             NGƯỜI POST:&nbsp;
+                            <label>
+                                ${current_post.user.userName}
+                            </label>
+                        </div>
+                        <div class="col-md-6" style="background:#28a4c9;padding: 5px;color:wheat">
+                            NGÀY POST:&nbsp;
+                            <label>
+                                ${current_post.datePost}
+                            </label>
+                        </div>
+                    </div>                           
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body" style="">
+                                <div class="col-md-4">
+                                    <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                                        <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <c:forEach items="${current_post.getBaiTapList()}" var="val">
+                                            <p><label>${val.baiTap}</label></p>
+                                        </c:forEach>
+                                    </div>
                                 </div>
-                                <div class="panel-body">
-                                    <c:forEach items="${current_post.getBaiTapList()}" var="val">
-                                        <p><label>${val.baiTap}</label></p>
-                                    </c:forEach>
+                                <div class="col-md-4">
+                                    <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                                        <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
+                                            <p><label>${val.kinhNghiem}</label></p>
+                                        </c:forEach>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                    <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
-                                </div>
-                                <div class="panel-body">
-                                    <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
-                                        <p><label>${val.kinhNghiem}</label></p>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                    <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
-                                </div>
-                                <div class="panel-body">
-                                    <c:forEach items="${current_post.getHuongDanList()}" var="val">
-                                        <p><label>${val.huongDan}</label></p>
-                                    </c:forEach>
+                                <div class="col-md-4">
+                                    <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                                        <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <c:forEach items="${current_post.getHuongDanList()}" var="val">
+                                            <p><label>${val.huongDan}</label></p>
+                                        </c:forEach>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -128,33 +144,36 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background:#28a4c9;color: white" >
-                    <h3><span class="glyphicon glyphicon-user"></span> &nbsp;BÌNH LUẬN</h3>
+                    <h3><span class="glyphicon glyphicon-user"></span> BÌNH LUẬN </h3>
                 </div>
-                <form action="detail" name="comment" method="post">
-                    <input type="text" name="post_id"   style="display: none"  value="${current_post.postID}"/>
-                    <div class="panel-body">
-                        <div class="col-md-12">
-                            <textarea name="content" class="col-md-12" style="min-height:100px; "></textarea>
-                        </div>
-                        <div class="col-md-7 col-md-offset-5">
-                            <button name="action" value="add-comment" class="btn bg-primary" style="margin-top: 5px;">Gửi</button>
-                            <button class="btn bg-info" style="margin-top: 5px;">Nhập lại</button>
-                        </div>
-                        <!-- vong lap-->
-                        <c:forEach items="${current_post.getCommentList()}" var="val">
+                <c:if test="${current_user == null}">
+                    Bạn phải đăng nhập
+                </c:if>
+                <c:if test="${current_user != null}">
+                    <form action="detail" name="comment" method="post">
+                        <input type="text" name="post_id"   style="display: none"  value="${current_post.postID}"/>
+                        <div class="panel-body">
                             <div class="col-md-12">
-                                <label class="label label-primary">${val.user.userName}</label>
+                                <textarea name="content" class="col-md-12" style="min-height:100px; "></textarea>
                             </div>
-                            <div class="col-md-12 alert alert-warning">
-                                <p class="alert-link">${val.content}</p>
+                            <div class="col-md-7 col-md-offset-5">
+                                <button name="action" value="add-comment" class="btn bg-primary" style="margin-top: 5px;">Gửi</button>
+                                <button class="btn bg-info" style="margin-top: 5px;">Nhập lại</button>
                             </div>
-                        </c:forEach>
-                    </div>
-                </form>
+                            <!-- vong lap-->
+                            <c:forEach items="${current_post.getCommentList()}" var="val">
+                                <div class="col-md-12">
+                                    <label class="label label-primary">${val.user.userName}</label>
+                                </div>
+                                <div class="col-md-12 alert alert-warning">
+                                    <p class="alert-link">${val.content}</p>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </form>
+                </c:if>
             </div>
         </div>
-
-
         <script src="../js/bootstrap.js" type="text/javascript"></script>
         <script src="../js/bootstrap.js" type="text/javascript"></script>
     </body>
