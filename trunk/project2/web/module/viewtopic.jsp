@@ -147,7 +147,7 @@
                     <h3><span class="glyphicon glyphicon-user"></span> BÌNH LUẬN </h3>
                 </div>
                 <c:if test="${current_user == null}">
-                    Bạn phải đăng nhập
+                    <div class="col-md-12 alert alert-warning " style="text-align: center;font-size: 18px ">Bạn phải đăng nhập</div>
                 </c:if>
                 <c:if test="${current_user != null}">
                     <form action="detail" name="comment" method="post">

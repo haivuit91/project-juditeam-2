@@ -7,7 +7,6 @@
 package controller.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import model.dao.PostDAO;
 import model.dao.service.PostDAOService;
 import model.entities.Post;
-import sun.rmi.server.Dispatcher;
 import util.Constants;
 
 /**
