@@ -31,10 +31,11 @@ public class BaiTapDAO implements BaiTapDAOService{
     @Override
     public List<BaiTap> listBaiTapByPostID(int postID) {
          List<BaiTap> list = new ArrayList<>();
-        String sql = "select * from tbl_baitap where isActive = true ";
+        String sql = "select * from tbl_baitap where postID=? and isActive = true ";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement sm = conn.prepareCall(sql);
+            sm.setInt(1, postID);
             ResultSet rs = sm.executeQuery();
             while(rs.next()){
                 list.add(getItem(rs));
