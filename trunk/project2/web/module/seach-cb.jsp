@@ -13,7 +13,7 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form action="search" name="search-cb">
+        <form action="search" name="search-cb" onsubmit="return checkSearchCB();">
             <div class="jumbotron navbar-seach">
                 <div class="container">
                     <h3 style="text-align: center;font-size: 40px;font-weight:bold;color:white">Bạn cần tìm các bài tập toán học để ôn thi ?</h3>
@@ -21,10 +21,10 @@
 
                     <div class="col-md-10 col-md-offset-1" style="text-align:center">
                         <div class="col-md-12">
-                            <input type="text" name="key_search" class="form-control">
+                            <input id="key_search" type="text" name="key_search" class="form-control">
                         </div><!-- /input-group -->
                         <div class="col-md-1 col-md-offset-10" style="margin-top:5px">
-                            <button type="submit" name="action" value="search-cb" class="btn btn-primary">Tìm kiếm </button>
+                            <button  type="submit" name="action" value="search-cb" class="btn btn-primary">Tìm kiếm </button>
                         </div>
                     </div>
                     <div class="col-md-1">
