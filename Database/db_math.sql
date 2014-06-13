@@ -89,7 +89,7 @@ CREATE TABLE `tbl_comment` (
   KEY `fk_tbl_comment_tbl_post1_idx` (`postID`),
   CONSTRAINT `fk_tbl_comment_tbl_user1` FOREIGN KEY (`userID`) REFERENCES `tbl_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_comment_tbl_post1` FOREIGN KEY (`postID`) REFERENCES `tbl_post` (`postID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +98,7 @@ CREATE TABLE `tbl_comment` (
 
 LOCK TABLES `tbl_comment` WRITE;
 /*!40000 ALTER TABLE `tbl_comment` DISABLE KEYS */;
+INSERT INTO `tbl_comment` VALUES (1,'Bài viết hay','2014-06-13',5,1,'');
 /*!40000 ALTER TABLE `tbl_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,7 +236,7 @@ CREATE TABLE `tbl_user` (
   PRIMARY KEY (`userID`,`roleID`),
   KEY `fk_tblUser_tblRole_idx` (`roleID`),
   CONSTRAINT `fk_tblUser_tblRole` FOREIGN KEY (`roleID`) REFERENCES `tbl_role` (`roleID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,7 +245,7 @@ CREATE TABLE `tbl_user` (
 
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-INSERT INTO `tbl_user` VALUES (1,'tuan','e10adc3949ba59abbe56e057f20f883e','Thanh tuấn','','1991-06-06','tuan@gmail.com','Đà nẵng',1,''),(2,'thanh','e10adc3949ba59abbe56e057f20f883e','Thanh','','1991-09-09','thanh@gmail.com','Bình Định',1,''),(3,'duy','e10adc3949ba59abbe56e057f20f883e','Ngọc duy','','1991-05-05','duy@gmail.com','Đà nẵng',2,''),(4,'cong','e10adc3949ba59abbe56e057f20f883e','Công','','1991-04-04','cong@gmail.com','Thanh hóa',2,'');
+INSERT INTO `tbl_user` VALUES (1,'tuan','e10adc3949ba59abbe56e057f20f883e','Thanh tuấn','','1991-06-06','tuan@gmail.com','Đà nẵng',1,''),(2,'thanh','e10adc3949ba59abbe56e057f20f883e','Thanh','','1991-09-09','thanh@gmail.com','Bình Định',1,''),(3,'duy','e10adc3949ba59abbe56e057f20f883e','Ngọc duy','','1991-05-05','duy@gmail.com','Đà nẵng',2,''),(4,'cong','e10adc3949ba59abbe56e057f20f883e','Công','','1991-04-04','cong@gmail.com','Thanh hóa',2,''),(5,'admin','e10adc3949ba59abbe56e057f20f883e','Administrator','','1991-04-04','admin@gmail.com','Đà nẵng',1,'');
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -257,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-13 11:25:24
+-- Dump completed on 2014-06-13 11:36:33
