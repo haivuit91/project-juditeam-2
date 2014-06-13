@@ -41,6 +41,7 @@ public class Authentication extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter(Constants.ACTION);
         if (action != null) {
             switch (action) {
@@ -65,6 +66,7 @@ public class Authentication extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter(Constants.ACTION);
         if (action != null) {
             switch (action) {
