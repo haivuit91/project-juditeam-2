@@ -158,7 +158,7 @@ ${val.user.userName}:${val.content}</c:forEach>
                         <div class="panel-heading" style="background: #28a4c9;color:wheat">
                             <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
                         </div>
-                        <div class="panel-body">
+                          <div class="panel-body" style="font-size:12px">
                             <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
                                 <p><label class="alert alert-success">${val.kinhNghiem}</label></p>
                                 </c:forEach>
@@ -168,7 +168,7 @@ ${val.user.userName}:${val.content}</c:forEach>
                         <div class="panel-heading" style="background: #28a4c9;color:wheat">
                             <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
                         </div>
-                        <div class="panel-body">
+                         <div class="panel-body" style="font-size:12px">
                             <c:forEach items="${current_post.getHuongDanList()}" var="val">
                                 <p><label class="alert alert-warning">${val.huongDan}</label></p>
                                 </c:forEach>
