@@ -32,7 +32,7 @@ CREATE TABLE `tbl_baitap` (
   PRIMARY KEY (`baiTapID`,`postID`),
   KEY `fk_tbl_baitap_tbl_post1_idx` (`postID`),
   CONSTRAINT `fk_tbl_baitap_tbl_post1` FOREIGN KEY (`postID`) REFERENCES `tbl_post` (`postID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `tbl_baitap` (
 
 LOCK TABLES `tbl_baitap` WRITE;
 /*!40000 ALTER TABLE `tbl_baitap` DISABLE KEYS */;
-INSERT INTO `tbl_baitap` VALUES (1,'DẠNG Phương trình với biến số (u, m, t, …)\r\na) 2t + 1 = 3t – 2 (Phương trình với biến số là t)\r\nb) 3 – 2m = 1 + 5(3m – 7) (Phương trình với biến số là m)',5,'');
+INSERT INTO `tbl_baitap` VALUES (1,'DẠNG Phương trình với biến số (u, m, t, …)\r\na) 2t + 1 = 3t – 2 (Phương trình với biến số là t)\r\nb) 3 – 2m = 1 + 5(3m – 7) (Phương trình với biến số là m)',5,''),(3,'Khảo sát sự biến thiên và vẽ đồ thị (C) của hàm số y = - x4 - x2 + 6',1,''),(4,'1. Cho phương trình: x^2 - 2(m - 1)x + m - 5 = 0\r\nXác định m để phương trình có 1 nghiệm x = -1;\r\nTìm m để phương trình có 2 nghiệm sao cho |x_1 - x_2| = 3.',3,''),(5,'Bài tập phương trình Logarit\r\nT.S Nguyễn Phú Khánh - Đà Lạt',2,''),(6,'Ví dụ:  Tính tích phân sau:\r\na) I=\\int\\limits_0^1{x^2\\sqrt{x^3+5}dx}\r\nb) J=\\int\\limits_0^{\\frac{\\pi }{2}} {\\left({\\sin^4 x+1}\\right)\\cos x}dx',4,'');
 /*!40000 ALTER TABLE `tbl_baitap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +89,7 @@ CREATE TABLE `tbl_comment` (
   KEY `fk_tbl_comment_tbl_post1_idx` (`postID`),
   CONSTRAINT `fk_tbl_comment_tbl_user1` FOREIGN KEY (`userID`) REFERENCES `tbl_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_comment_tbl_post1` FOREIGN KEY (`postID`) REFERENCES `tbl_post` (`postID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `tbl_comment` (
 
 LOCK TABLES `tbl_comment` WRITE;
 /*!40000 ALTER TABLE `tbl_comment` DISABLE KEYS */;
-INSERT INTO `tbl_comment` VALUES (1,'Bài viết hay','2014-06-13',5,1,'');
+INSERT INTO `tbl_comment` VALUES (1,'Bài viết hay','2014-06-13',5,1,''),(2,'Tk','2014-06-13',1,1,''),(3,'Bài viết kém','2014-06-13',1,1,'');
 /*!40000 ALTER TABLE `tbl_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `tbl_huongdan` (
   PRIMARY KEY (`huongDanID`,`postID`),
   KEY `fk_tbl_huongdan_tbl_post1_idx` (`postID`),
   CONSTRAINT `fk_tbl_huongdan_tbl_post1` FOREIGN KEY (`postID`) REFERENCES `tbl_post` (`postID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,6 +126,7 @@ CREATE TABLE `tbl_huongdan` (
 
 LOCK TABLES `tbl_huongdan` WRITE;
 /*!40000 ALTER TABLE `tbl_huongdan` DISABLE KEYS */;
+INSERT INTO `tbl_huongdan` VALUES (1,'Quy tắc chuyển vế :\r\ntrong một phương trình, ta có thể chuyển một hạng tử từ vế này sang vế kia và đổi dấu hạng tử đó.\r\nQuy tắc nhân với một số :\r\ntrong một phương trình, ta có thể nhân (chia) cả hai vế với cùng một số khác 0.',5,''),(2,'Khảo sát sự biến thiên và vẽ đồ thị của hàm số y = f(x)\r\n    + Tập xác định của hàm số\r\n    + Sự biến thiên:\r\n         - Chiều biến thiên\r\n                Tính đạo hàm cấp 1 và tìm nghiệm của đạo hàm (nếu có) \r\n                Kết luận tính đơn điệu của hàm số\r\n         - Cực trị của hàm số\r\n         - Giới hạn của hàm số và đường tiệm cận (nếu có) của đồ thị hàm số\r\n    + Lập bảng biến thiên\r\n    + Vẽ đồ thị ',1,''),(3,'Câu a\r\n\r\nx=−1⇒1+2(m−1)+m−5=0⇒m=2\r\n\r\ncâu b \r\n\r\nΔ′=(m−1)2−(m−5)=m2−3m+6>0∀mx1+2=2(m−1),x1x2=m−5|x1−x2|=3⇒(x1−x2)2=9⇒(x1+x2)2−4x1x2=94(m−1)2−4(m−5)=9⇒vô−nghiệm',3,''),(4,'Giải từng bước nhỏ nhất',2,''),(5,'Giải từ cái nhỏ nhất',4,'');
 /*!40000 ALTER TABLE `tbl_huongdan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +145,7 @@ CREATE TABLE `tbl_kinhnghiem` (
   PRIMARY KEY (`kinhNghiemID`,`postID`),
   KEY `fk_tbl_kinhnghiem_tbl_post1_idx` (`postID`),
   CONSTRAINT `fk_tbl_kinhnghiem_tbl_post1` FOREIGN KEY (`postID`) REFERENCES `tbl_post` (`postID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,6 +154,7 @@ CREATE TABLE `tbl_kinhnghiem` (
 
 LOCK TABLES `tbl_kinhnghiem` WRITE;
 /*!40000 ALTER TABLE `tbl_kinhnghiem` DISABLE KEYS */;
+INSERT INTO `tbl_kinhnghiem` VALUES (1,'Khả năng giải quyết bài toán cơ bản',5,''),(2,'Làm các bước nhỏ trước',1,''),(3,'Bình tĩnh tự tinh để làm bài',3,''),(4,'Bình tỉnh giải bài',2,''),(6,'Bình tĩnh, tự tin để giải bài',4,'');
 /*!40000 ALTER TABLE `tbl_kinhnghiem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-13 11:39:44
+-- Dump completed on 2014-06-13 13:03:18
