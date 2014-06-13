@@ -103,42 +103,6 @@
                     </label>
                 </div>
             </div>                           
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-body" style="">
-                        <div class="col-md-4">
-                            <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
-                            </div>
-                            <div class="panel-body" style="font-size:12px">
-                                <c:forEach items="${current_post.getBaiTapList()}" var="val">
-                                     <p><label class="alert alert-info">${val.baiTap}</label></p>
-                                </c:forEach>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
-                            </div>
-                            <div class="panel-body">
-                                <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
-                                    <p><label class="alert alert-success">${val.kinhNghiem}</label></p>
-                                </c:forEach>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="panel-heading" style="background: #28a4c9;color:wheat">
-                                <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
-                            </div>
-                            <div class="panel-body">
-                                <c:forEach items="${current_post.getHuongDanList()}" var="val">
-                                    <p><label class="alert alert-warning">${val.huongDan}</label></p>
-                                </c:forEach>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!--BINH LUAN-->
         <div class="col-md-4">
@@ -161,17 +125,56 @@
                                 <button class="btn bg-info" style="margin-top: 5px;">Nhập lại</button>
                             </div>
                             <!-- vong lap-->
-                            <c:forEach items="${current_post.getCommentList()}" var="val">
-                                <div class="col-md-12">
-                                    <label class="label label-primary">${val.user.userName}</label>
-                                </div>
-                                <div class="col-md-12 alert alert-warning">
-                                    <p class="alert-link">${val.content}</p>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </form>
+
+                            <textarea class="col-md-12 alert alert-info"style="height:310px;margin-top:5px"><c:forEach items="${current_post.getCommentList()}" var="val">
+${val.user.userName}:${val.content}</c:forEach>
+                                </textarea>
+                            </div>
+                        </form>
                 </c:if>
+            </div>
+        </div>
+        <!--END BINH LUAN-->
+
+
+
+
+
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="">
+                    <div class="col-md-4">
+                        <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
+                        </div>
+                        <div class="panel-body" style="font-size:12px">
+                            <c:forEach items="${current_post.getBaiTapList()}" var="val">
+                                <p><label class="alert alert-info">${val.baiTap}</label></p>
+                                </c:forEach>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
+                        </div>
+                        <div class="panel-body">
+                            <c:forEach items="${current_post.getKinhNghiemList()}" var="val">
+                                <p><label class="alert alert-success">${val.kinhNghiem}</label></p>
+                                </c:forEach>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Hướng dẫn</h4>
+                        </div>
+                        <div class="panel-body">
+                            <c:forEach items="${current_post.getHuongDanList()}" var="val">
+                                <p><label class="alert alert-warning">${val.huongDan}</label></p>
+                                </c:forEach>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="../js/bootstrap.js" type="text/javascript"></script>
