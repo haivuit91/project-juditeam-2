@@ -126,7 +126,7 @@
                             </div>
                             <!-- vong lap-->
 
-                            <textarea class="col-md-12 alert alert-info"style="height:310px;margin-top:5px"><c:forEach items="${current_post.getCommentList()}" var="val">
+                            <textarea  disabled class="col-md-12 alert alert-info"style="height:310px;margin-top:5px"><c:forEach items="${current_post.getCommentList()}" var="val">
 ${val.user.userName}:${val.content}</c:forEach>
                                 </textarea>
                             </div>
