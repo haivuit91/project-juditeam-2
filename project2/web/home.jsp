@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#">TRA CỨU THÔNG TIN</a><br>
+                    <a class="navbar-brand" href="/project2/index">TRA CỨU THÔNG TIN</a><br>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
