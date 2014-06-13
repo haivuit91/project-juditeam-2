@@ -56,9 +56,14 @@
                 <div class="panel-group" style="text-align:center;margin-top: 15px;">
                     <!--START Nut them thong tin-->
                     <!--cHO NAY NE CON-->
-                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#1myModal">
-                        Thêm thông tin
-                    </button>
+                    <c:if test="${current_user.userID == current_post.getUser().userID}">
+                        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#1myModal">
+                            Thêm thông tin
+                        </button>
+                    </c:if>
+                    <c:if test="${current_user.userID != current_post.getUser().userID}">
+                            Bạn không có quyền thêm thông tin
+                    </c:if>
                     <form action="teacher-post" name="info" method="post">
                         <div class="modal fade" id="1myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
