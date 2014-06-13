@@ -34,13 +34,13 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/project2/index">Trang chủ</a></li>
                             <c:if test="${current_user != null}">
-                                <li><a href="/project2/teacher-post?action=new-toppic">Tạo mới</a></li>
+                            <li><a href="/project2/teacher-post?action=new-toppic">Tạo mới</a></li>
                             </c:if>
                             <c:if test="${current_user == null}">
-                                <li><a href="/project2/authen?action=login-logout">Đăng nhập|Đăng ký</a></li>
+                            <li><a href="/project2/authen?action=login-logout">Đăng nhập|Đăng ký</a></li>
                             </c:if>
                             <c:if test="${current_user != null}">
-                                <li><a href="/project2/authen?action=logout">Thoát</a></li>
+                            <li><a href="/project2/authen?action=logout">Thoát</a></li>
                             </c:if>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -53,7 +53,7 @@
         <c:if test="${p == 'seach-cb'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
-                <%@include file="module/viewtopic.jsp" %>
+                <%@include file="module/result-search.jsp" %>
             </div>
         </c:if>
         <c:if test="${p == 'seach-nc'}">
@@ -62,7 +62,12 @@
                 <%@include file="module/result-search.jsp" %>
             </div>
         </c:if>
-
+       <c:if test="${p == 'view_post'}">
+            <%@include file="module/seach-cb.jsp" %>
+            <div class="container">
+                <%@include file="module/viewtopic.jsp" %>
+            </div>
+        </c:if>
         <!--Content Information-->
         <div class="container">
             <div class="row">

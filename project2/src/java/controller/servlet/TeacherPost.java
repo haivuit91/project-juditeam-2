@@ -16,16 +16,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.dao.BaiTapDAO;
 import model.dao.CategoryDAO;
+import model.dao.CommentDAO;
 import model.dao.HuongDanDAO;
 import model.dao.KinhNghiemDAO;
 import model.dao.PostDAO;
 import model.dao.service.BaiTapDAOService;
 import model.dao.service.CategoryDAOService;
+import model.dao.service.CommentDAOService;
 import model.dao.service.HuongDanDAOService;
 import model.dao.service.KinhNghiemDAOService;
 import model.dao.service.PostDAOService;
 import model.entities.BaiTap;
 import model.entities.Category;
+import model.entities.Comment;
 import model.entities.HuongDan;
 import model.entities.KinhNghiem;
 import model.entities.Post;
@@ -91,6 +94,10 @@ public class TeacherPost extends HttpServlet {
         PostDAOService postService = PostDAO.getInstance();
         String type = request.getParameter("type");
         String content = request.getParameter("content");
+        System.out.println(type);
+        System.out.println(content);
+        System.out.println(request.getParameter("post_id"));
+        
         int postID = Integer.valueOf(request.getParameter("post_id"));
       
         Post post = postService.getPostByID(postID);
@@ -112,7 +119,7 @@ public class TeacherPost extends HttpServlet {
                 isSuccess = baiTapService.insertBaiTap(baiTap);
                 break;
         }
-        response.sendRedirect("/project2/index");
+        refreshViewPost(request, response,postID);
     }
     private void addNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CategoryDAOService categoryService = CategoryDAO.getInstance();
@@ -121,7 +128,6 @@ public class TeacherPost extends HttpServlet {
         String shortTitle = request.getParameter("short_title");
         String sCategoryID = request.getParameter("category_id");
         String content = request.getParameter("content");
-       
         
         Category category = categoryService.getCategoryByID(Integer.valueOf(sCategoryID));
          System.out.println(category.getCategoryID()+"");
@@ -135,7 +141,25 @@ public class TeacherPost extends HttpServlet {
             request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
         }
     }
-
+    private void refreshViewPost(HttpServletRequest request, HttpServletResponse response,int postID) throws ServletException, IOException {
+         PostDAOService postService = PostDAO.getInstance();
+        BaiTapDAOService baiTapService = BaiTapDAO.getInstance();
+        KinhNghiemDAOService kinhNghiemService = KinhNghiemDAO.getInstance();
+        HuongDanDAOService huongDanService = HuongDanDAO.getInstance();
+        CommentDAOService commentService = CommentDAO.getInstance();
+        Post post = postService.getPostByID(postID);
+        List<BaiTap> listBaiTap = baiTapService.listBaiTapByPostID(postID);
+        List<KinhNghiem> listKinhNghiem = kinhNghiemService.getKinhNghiemByPostID(postID);
+        List<HuongDan> listHuongDan = huongDanService.getHuongDanByPostID(postID);
+        List<Comment> listComment = commentService.getCommentByPostID(postID);
+        post.setBaiTapList(listBaiTap);
+        post.setHuongDanList(listHuongDan);
+        post.setKinhNghiemList(listKinhNghiem);
+        post.setCommentList(listComment);
+        request.setAttribute(Constants.CURRENT_POST, post);
+        request.setAttribute(Constants.PAGE,"view_post");
+        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+    }
     private void editPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
