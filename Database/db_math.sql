@@ -41,7 +41,7 @@ CREATE TABLE `tbl_baitap` (
 
 LOCK TABLES `tbl_baitap` WRITE;
 /*!40000 ALTER TABLE `tbl_baitap` DISABLE KEYS */;
-INSERT INTO `tbl_baitap` VALUES (1,'DẠNG Phương trình với biến số (u, m, t, …)\r\na) 2t + 1 = 3t – 2 (Phương trình với biến số là t)\r\nb) 3 – 2m = 1 + 5(3m – 7) (Phương trình với biến số là m)',5,''),(2,'dsdsd',5,'');
+INSERT INTO `tbl_baitap` VALUES (1,'DẠNG Phương trình với biến số (u, m, t, …)\r\na) 2t + 1 = 3t – 2 (Phương trình với biến số là t)\r\nb) 3 – 2m = 1 + 5(3m – 7) (Phương trình với biến số là m)',5,'');
 /*!40000 ALTER TABLE `tbl_baitap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-13 11:36:33
+-- Dump completed on 2014-06-13 11:39:44
