@@ -29,10 +29,11 @@ public class HuongDanDAO implements HuongDanDAOService {
     @Override
     public List<HuongDan> getHuongDanByPostID(int postID) {
         List<HuongDan> list = new ArrayList<>();
-        String sql = "select * from tbl_huongdan where isActive = true ";
+        String sql = "select * from tbl_huongdan where postID=? and isActive = true ";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement sm = conn.prepareCall(sql);
+            sm.setInt(1, postID);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 list.add(getItem(rs));

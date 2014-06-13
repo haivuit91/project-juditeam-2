@@ -29,10 +29,11 @@ public class KinhNghiemDAO implements KinhNghiemDAOService {
     @Override
     public List<KinhNghiem> getKinhNghiemByPostID(int postID) {
         List<KinhNghiem> list = new ArrayList<>();
-        String sql = "select * from tbl_kinhnghiem where isActive = true ";
+        String sql = "select * from tbl_kinhnghiem where postID =? and isActive = true ";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement sm = conn.prepareCall(sql);
+            sm.setInt(1, postID);
             ResultSet rs = sm.executeQuery();
             while(rs.next()){
                 list.add(getItem(rs));

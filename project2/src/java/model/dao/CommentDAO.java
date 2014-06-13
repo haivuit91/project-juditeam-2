@@ -58,7 +58,7 @@ public class CommentDAO implements CommentDAOService {
     @Override
     public List<Comment> getCommentByPostID(int postID) {
         List<Comment> list = new ArrayList<>();
-        String sql = "select * from tbl_comment where postID=? ";
+        String sql = "select * from tbl_comment where postID=? and isActive = true ";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement sm = conn.prepareStatement(sql);
