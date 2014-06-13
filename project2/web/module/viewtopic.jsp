@@ -13,76 +13,130 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3><span class="glyphicon glyphicon-plus"></span> &nbsp;Thêm mới địa phương</h3>
+                <div class="panel-heading"style="background:#28a4c9;color: white" >
+                    <h3><span class="glyphicon glyphicon-align-left"></span> &nbsp;Tiêu đề:&nbsp;</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" action="/project1/dpmanage" method="post">
-                        <!-- TÊN XÃ -->
+                    <textarea class="col-md-12" style="min-height:300px; ">Không Enter</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"style="background:#28a4c9;color: white" >
+                    <h3><span class="glyphicon glyphicon-user"></span> &nbsp;BÌNH LUẬN</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <textarea class="col-md-12" style="min-height:100px; "></textarea>
+                    </div>
+                    <div class="col-md-7 col-md-offset-5">
+                        <button class="btn bg-primary" style="margin-top: 5px;">Gửi</button>
+                        <button class="btn bg-info" style="margin-top: 5px;">Nhập lại</button>
+                    </div>
+                    <!-- vong lap-->
+                    <div class="col-md-12">
+                        <label class="label label-primary">username</label>
+                    </div>
+                    <div class="col-md-12 alert alert-warning">
+                        <p class="alert-link">Tôi là tôi hehe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-group" style="text-align:center;margin-top: 15px;">
+                    <!--START Nut them thong tin-->
+                    <!--cHO NAY NE CON-->
+                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#1myModal">
+                        Thêm thông tin địa phương
+                    </button>
+                    <div class="modal fade" id="1myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3><span class="glyphicon glyphicon-plus"></span>&nbsp;THÊM THÔNG TIN ĐỊA PHƯƠNG</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal" role="form" action="/project1/dpmanage" method="post">
+                                            
+                                            <!--Người phụ trách-->
+                                            <div class="form-group">
+                                                <div class="col-sm-3" >
+                                                    <label class="label label-info" style="padding: 5px;font-size:13px">Loại</label>
+                                                </div>
+                                                <div class="col-sm-9" >
+                                                    <select class="form-control" name="nguoiPhuTrach">
+                                                        <option>abc</option>
+                                                        <option>nguyen</option>
+                                                        <option>Duy</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--Nội Dung-->
+                                            <div class="form-group">
+                                                <div class="col-sm-3" >
+                                                    <label class="label label-info" style="padding: 5px;font-size:13px">Nội dung</label>
+                                                </div>
+                                                <div class="col-sm-9" >
+                                                    <textarea class="col-md-12"style="min-height:100px"></textarea>
+                                                </div>
+                                            </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-2" >
-                                <label class="label label-primary" style="padding: 5px;font-size:13px">Mã ĐP</label>
-                            </div>
-                            <div class="col-sm-10" >
-                                <input type="text" name="maDP" value=""  class="form-control" id="inputEmail3">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-2" >
-                                <label class="label label-primary" style="padding: 5px;font-size:13px">Tên ĐP</label>
-                            </div>
-                            <div class="col-sm-10" >
-                                <input type="text" name="tenDP" value=""  class="form-control" id="inputEmail3">
+                                            <div class="form-group">
+                                                <div class="col-sm-6 col-sm-offset-6" >
+                                                    <input type="submit" value="Thêm thông tin" name="submit" class="btn btn-success"/>
+                                                    &nbsp;
+                                                    <button type="reset" class="btn btn-warning">Clear</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-2" >
-                                <label class="label label-primary" style="padding: 5px;font-size:13px">Số điện thoại</label>
-                            </div>
-                            <div class="col-sm-10" >
-                                <input type="text" name="SDT" value=""  class="form-control" id="inputEmail3">
-                            </div>
+                    </div>
+                    <!--kET THUC NE CON-->                                   
+
+
+                    <!--END Nut them thong tin-->
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body" style="">
+                    <div class="col-md-4">
+                        <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Bài tập</h4>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-2" >
-                                <label class="label label-primary" style="padding: 5px;font-size:13px">Nơi nhận</label>
-                            </div>
-                            <div class="col-sm-10" >
-                                <input type="text" name="noiNhan" value=""  class="form-control" id="inputEmail3">
-                            </div>
+                        <div class="panel-body">
+                            <p><label>Thong tin 1</label></p>
+                            <p><label>Thong tin 1</label></p>
+                            <p><label>Thong tin 1</label></p>
+                            <p><label>Thong tin 1</label></p>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-2" >
-                                <label class="label label-primary" style="padding: 5px;font-size:13px">Diện tích</label>
-                            </div>
-                            <div class="col-sm-10" >
-                                <input type="text" name="dienTich" value=""  class="form-control" id="inputEmail3">
-                            </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Kinh nghiệm</h4>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-2" >
-                                <label class="label label-primary" style="padding: 5px;font-size:13px">Số dân</label>
-                            </div>
-                            <div class="col-sm-10" >
-                                <input type="text" name="soDan" value=""  class="form-control" id="inputEmail3">
-                            </div>
-                        </div>                                     
-                        <div class="form-group">
-                            <div class="col-sm-6 col-sm-offset-6" >
-                                <input type="submit" value="Thêm mới" name="submit" class="btn btn-primary"/>
-                                &nbsp;
-                                <button type="reset" class="btn btn-warning">Clear</button>
-                            </div>
+                        <div class="panel-body">Than bai</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel-heading" style="background: #28a4c9;color:wheat">
+                            <h4><span class="glyphicon glyphicon-align-left"></span> &nbsp;Nội dung</h4>
                         </div>
-                    </form>
+                        <div class="panel-body">Than bai</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <script src="../js/bootstrap.js" type="text/javascript"></script>
-        <script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
     </body>
 </html>

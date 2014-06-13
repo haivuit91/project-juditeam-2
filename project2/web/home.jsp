@@ -53,7 +53,7 @@
         <c:if test="${p == 'seach-cb'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
-                <%@include file="module/result-search.jsp" %>
+                <%@include file="module/viewtopic.jsp" %>
             </div>
         </c:if>
         <c:if test="${p == 'seach-nc'}">
