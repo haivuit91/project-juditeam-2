@@ -8,6 +8,7 @@ package controller.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import model.dao.service.UserDAOService;
 import model.entities.Role;
 import model.entities.User;
 import util.Constants;
+import util.DataFile;
 import util.MD5;
 
 /**
@@ -29,6 +31,22 @@ import util.MD5;
  */
 public class Authentication extends HttpServlet {
 
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        String realPath = getServletContext().getRealPath("/");
+        String absolutePath = realPath.replace("build\\web", "");
+        ServletContext context = getServletContext();
+        boolean isLoaded = false;
+        if (context.getAttribute("loaded") != null) {
+            isLoaded = (boolean) context.getAttribute("loaded");
+        }
+        if (!isLoaded) {
+            DataFile.loadFile(absolutePath);
+            context.setAttribute("loaded", true);
+        }
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
