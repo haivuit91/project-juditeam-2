@@ -17,12 +17,11 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     private static Connection connection;
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/db_math";
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName(DRIVER);
         if (connection == null) {
-            connection = DriverManager.getConnection(URL,"root" ,"123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + util.DataFile.db_name + "", util.DataFile.user, util.DataFile.pass);
         }
         return connection;
     }

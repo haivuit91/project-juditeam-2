@@ -7,10 +7,12 @@ package controller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.DataFile;
 
 /**
  *
@@ -18,6 +20,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Page extends HttpServlet {
 
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        String realPath = getServletContext().getRealPath("/");
+        String absolutePath = realPath.replace("build\\web", "");
+        ServletContext context = getServletContext();
+        boolean isLoaded = false;
+        if (context.getAttribute("loaded") != null) {
+            isLoaded = (boolean) context.getAttribute("loaded");
+        }
+        if (!isLoaded) {
+            DataFile.loadFile(absolutePath);
+            context.setAttribute("loaded", true);
+        }
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
