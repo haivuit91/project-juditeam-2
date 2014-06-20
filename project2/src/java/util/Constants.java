@@ -52,6 +52,7 @@ public class Constants {
     public static final String LIST_COMMENT = "list_comment";
     public static final String CURRENT_PAGE = "current_page";
     public static final String TOTAL_PAGE = "total_page";
+    public static final String TOTAL_RESULT = "total_result";
     
    
     
