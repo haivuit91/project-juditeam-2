@@ -35,7 +35,7 @@ import util.Support;
  *
  * @author Tuanka
  */
-public class ViewPost extends HttpServlet {
+public class ViewPostServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -105,9 +105,9 @@ public class ViewPost extends HttpServlet {
         List<KinhNghiem> listKinhNghiem = kinhNghiemService.getKinhNghiemByPostID(postID);
         List<HuongDan> listHuongDan = huongDanService.getHuongDanByPostID(postID);
         List<Comment> listComment = commentService.getCommentByPostID(postID);
-        post.setBaiTapList(listBaiTap);
-        post.setHuongDanList(listHuongDan);
-        post.setKinhNghiemList(listKinhNghiem);
+    //    post.setBaiTapList(listBaiTap);
+  //      post.setHuongDanList(listHuongDan);
+   //     post.setKinhNghiemList(listKinhNghiem);
         post.setCommentList(listComment);
         request.setAttribute(Constants.CURRENT_POST, post);
         request.setAttribute(Constants.PAGE,"view_post");
@@ -125,9 +125,9 @@ public class ViewPost extends HttpServlet {
         List<KinhNghiem> listKinhNghiem = kinhNghiemService.getKinhNghiemByPostID(postID);
         List<HuongDan> listHuongDan = huongDanService.getHuongDanByPostID(postID);
         List<Comment> listComment = commentService.getCommentByPostID(postID);
-        post.setBaiTapList(listBaiTap);
-        post.setHuongDanList(listHuongDan);
-        post.setKinhNghiemList(listKinhNghiem);
+   //     post.setBaiTapList(listBaiTap);
+  //      post.setHuongDanList(listHuongDan);
+  //      post.setKinhNghiemList(listKinhNghiem);
         post.setCommentList(listComment);
         request.setAttribute(Constants.CURRENT_POST, post);
         request.setAttribute(Constants.PAGE,"view_post");

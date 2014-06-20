@@ -26,11 +26,11 @@
     </servlet>
     <servlet>
         <servlet-name>TeacherPost</servlet-name>
-        <servlet-class>controller.servlet.TeacherPost</servlet-class>
+        <servlet-class>controller.servlet.PostServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewPost</servlet-name>
-        <servlet-class>controller.servlet.ViewPost</servlet-class>
+        <servlet-class>controller.servlet.ViewPostServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
