@@ -36,6 +36,26 @@ public class PostDAO implements PostDAOService {
         return postDAO;
     }
 
+    private Post getItem(ResultSet rs) {
+        Post post = null;
+        try {
+            post = new Post();
+            post.setTitle(rs.getString("title"));
+            post.setShortTitle(rs.getString("shortTitle"));
+            post.setContent(rs.getString("content"));
+            post.setLink(rs.getString("link"));
+            post.setDatePost(rs.getDate("datePost"));
+            User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+            post.setUser(user);
+            Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+            post.setCategory(category);
+            post.setActive(true);
+        } catch (SQLException e) {
+            System.err.println("getItem post eror:" + e.getMessage());
+        }
+        return post;
+    }
+
     @Override
     public List<Post> getPosts() {
         List<Post> listPost = new ArrayList<>();
@@ -45,17 +65,17 @@ public class PostDAO implements PostDAOService {
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
-                Post post = new Post();
-                post.setTitle(rs.getString("title"));
-                post.setShortTitle(rs.getString("shortTitle"));
-                post.setContent(rs.getString("content"));
-                post.setDatePost(rs.getDate("datePost"));
-                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-                post.setUser(user);
-                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-                post.setCategory(category);
-                post.setActive(true);
-                listPost.add(post);
+//                Post post = new Post();
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -73,17 +93,17 @@ public class PostDAO implements PostDAOService {
             ResultSet rs = pstmt.executeQuery();
             pstmt.setInt(1, userID);
             while (rs.next()) {
-                Post post = new Post();
-                post.setTitle(rs.getString("title"));
-                post.setShortTitle(rs.getString("shortTitle"));
-                post.setContent(rs.getString("content"));
-                post.setDatePost(rs.getDate("datePost"));
-                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-                post.setUser(user);
-                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-                post.setCategory(category);
-                post.setActive(true);
-                listPost.add(post);
+//                Post post = new Post();
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -102,17 +122,17 @@ public class PostDAO implements PostDAOService {
             ResultSet rs = pstmt.executeQuery();
             pstmt.setInt(1, catID);
             while (rs.next()) {
-                Post post = new Post();
-                post.setTitle(rs.getString("title"));
-                post.setShortTitle(rs.getString("shortTitle"));
-                post.setContent(rs.getString("content"));
-                post.setDatePost(rs.getDate("datePost"));
-                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-                post.setUser(user);
-                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-                post.setCategory(category);
-                post.setActive(true);
-                listPost.add(post);
+//                Post post = new Post();
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -191,18 +211,18 @@ public class PostDAO implements PostDAOService {
             ResultSet rs = sm.executeQuery(sql);
             System.out.println(sql);
             while (rs.next()) {
-                Post post = new Post();
-                post.setPostID(rs.getInt("postID"));
-                post.setTitle(rs.getString("title"));
-                post.setShortTitle(rs.getString("shortTitle"));
-                post.setContent(rs.getString("content"));
-                post.setDatePost(rs.getDate("datePost"));
-                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-                post.setUser(user);
-                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-                post.setCategory(category);
-                post.setActive(true);
-                listPost.add(post);
+//                Post post = new Post();
+//                post.setPostID(rs.getInt("postID"));
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getStackTrace());
@@ -224,17 +244,17 @@ public class PostDAO implements PostDAOService {
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
-                Post post = new Post();
-                post.setTitle(rs.getString("title"));
-                post.setShortTitle(rs.getString("shortTitle"));
-                post.setContent(rs.getString("content"));
-                post.setDatePost(rs.getDate("datePost"));
-                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-                post.setUser(user);
-                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-                post.setCategory(category);
-                post.setActive(true);
-                listPost.add(post);
+//                Post post = new Post();
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -273,17 +293,17 @@ public class PostDAO implements PostDAOService {
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
-                Post post = new Post();
-                post.setTitle(rs.getString("title"));
-                post.setShortTitle(rs.getString("shortTitle"));
-                post.setContent(rs.getString("content"));
-                post.setDatePost(rs.getDate("datePost"));
-                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-                post.setUser(user);
-                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-                post.setCategory(category);
-                post.setActive(true);
-                listPost.add(post);
+//                Post post = new Post();
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -305,18 +325,18 @@ public class PostDAO implements PostDAOService {
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
-                Post post = new Post();
-                post.setPostID(rs.getInt("postID"));
-                post.setTitle(rs.getString("title"));
-                post.setShortTitle(rs.getString("shortTitle"));
-                post.setContent(rs.getString("content"));
-                post.setDatePost(rs.getDate("datePost"));
-                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-                post.setUser(user);
-                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-                post.setCategory(category);
-                post.setActive(true);
-                listPost.add(post);
+//                Post post = new Post();
+//                post.setPostID(rs.getInt("postID"));
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -338,29 +358,10 @@ public class PostDAO implements PostDAOService {
             sm.setInt(1, postID);
             ResultSet rs = sm.executeQuery();
             if (rs.next()) {
-               return getItem(rs);
+                return getItem(rs);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-    private Post getItem(ResultSet rs) {
-        try {
-            Post post = new Post();
-            post.setPostID(rs.getInt("postID"));
-            post.setTitle(rs.getString("title"));
-            post.setShortTitle(rs.getString("shortTitle"));
-            post.setContent(rs.getString("content"));
-            post.setDatePost(rs.getDate("datePost"));
-            User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-            post.setUser(user);
-            Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-            post.setCategory(category);
-            post.setActive(true);
-            return post;
-        } catch (SQLException e) {
         }
         return null;
     }
@@ -417,7 +418,7 @@ public class PostDAO implements PostDAOService {
     public List<Post> searchByAdvance(String title, String content, String baiTap, String huongDan, String kinhNghiem) {
         String select = "select distinct tbl_post.postID,title,shortTitle,content,datePost,userID,categoryID,tbl_post.isActive ";
         String from = " from ((tbl_post inner join tbl_baitap on tbl_post.postID = tbl_baitap.postID) inner join tbl_huongdan on tbl_post.postID = tbl_huongdan.postID) inner join tbl_kinhnghiem on tbl_kinhnghiem.postID = tbl_post.postID ";
-        String where = " where title like '%"+title+"%' and content like '%"+content+"%' and baiTap like '%"+baiTap+"%' and huongDan like '%"+huongDan+"%' and kinhNghiem like '%"+kinhNghiem+"%' " ;
+        String where = " where title like '%" + title + "%' and content like '%" + content + "%' and baiTap like '%" + baiTap + "%' and huongDan like '%" + huongDan + "%' and kinhNghiem like '%" + kinhNghiem + "%' ";
         String sql = select + from + where;
         //String sql = "select distinct tbl_post.postID,title,shortTitle,content,datePost,userID,categoryID,tbl_post.isActive from ((tbl_post inner join tbl_baitap on tbl_post.postID = tbl_baitap.postID) inner join tbl_huongdan on tbl_post.postID = tbl_huongdan.postID) inner join tbl_kinhnghiem on tbl_kinhnghiem.postID = tbl_post.postID ";
         List<Post> list = new ArrayList<>();
@@ -431,5 +432,32 @@ public class PostDAO implements PostDAOService {
         } catch (ClassNotFoundException | SQLException e) {
         }
         return list;
+    }
+
+    @Override
+    public List<Post> getPostByDate() {
+        List<Post> listPost = new ArrayList<>();
+        String sql = "SELECT * FROM db_math.tbl_post order by datePost desc ";
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+//                Post post = new Post();
+//                post.setTitle(rs.getString("title"));
+//                post.setShortTitle(rs.getString("shortTitle"));
+//                post.setContent(rs.getString("content"));
+//                post.setDatePost(rs.getDate("datePost"));
+//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
+//                post.setUser(user);
+//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
+//                post.setCategory(category);
+//                post.setActive(true);
+                listPost.add(getItem(rs));
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return listPost;
     }
 }

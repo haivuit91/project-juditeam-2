@@ -36,7 +36,12 @@ public interface PostDAOService {
      * @return list post
      */
     List<Post> getPostByUserID(int userID);
-
+    /**
+     * get post newest
+     * @return 
+     */
+    List<Post> getPostByDate();
+    
     /**
      * get list post by category id
      *

@@ -1,6 +1,6 @@
 <%-- 
     Document   : home
-    Created on : Jun 12, 2014, 7:14:09 AM
+eated on : Jun 12, 2014, 7:14:09 AM
     Author     : Welcomes
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,12 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang chủ</title>
+        <script src="js/script.js" type="text/javascript"> </script>
+         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
-    <script src="js/script.js" type="text/javascript"></script>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <style>
-
-    </style>
+    
     <body>
         <!--Header-->
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -51,7 +49,7 @@
         <c:if test="${p == 'login' || p == null}">
             <%@include file="module/seach-cb.jsp" %>
         </c:if>
-        <c:if test="${p == 'seach-cb'}">
+        <c:if test="${p == 'search-cb'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
                 <%@include file="module/result-search.jsp" %>
@@ -61,8 +59,7 @@
             <%@include file="module/seach-nc.jsp" %>
             <div class="container">
                 <%@include file="module/result-search.jsp" %>
-            </div>
-        </c:if>
+            </div>  </c:if>
        <c:if test="${p == 'view_post'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
@@ -83,11 +80,6 @@
                 </c:if>
             </div>
         </div>
-
-
-
-
-
         <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
     </body>
