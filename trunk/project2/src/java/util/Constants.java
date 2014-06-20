@@ -50,6 +50,8 @@ public class Constants {
     public static final String LIST_HUONG_DAN = "list_huong_dan";
     public static final String LIST_KINH_NGHIEM = "list_kinh_nghiem";
     public static final String LIST_COMMENT = "list_comment";
+    public static final String CURRENT_PAGE = "current_page";
+    public static final String TOTAL_PAGE = "total_page";
     
    
     
