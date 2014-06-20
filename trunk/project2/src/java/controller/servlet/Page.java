@@ -7,11 +7,17 @@ package controller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.PostDAO;
+import model.dao.service.PostDAOService;
+import model.entities.Post;
+import util.Constants;
 import util.DataFile;
 
 /**
@@ -35,7 +41,7 @@ public class Page extends HttpServlet {
             context.setAttribute("loaded", true);
         }
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -74,10 +80,38 @@ public class Page extends HttpServlet {
                     break;
             }
         } else {
-            request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+            // default load post by post day
+            defaultLoad(request, response);
+
         }
     }
 
+    private void defaultLoad(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Post> listPost = PostDAO.getInstance().getPostByDate();
+        paging(request, response, listPost);
+        request.setAttribute(Constants.ACTION,"load-default");
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+    }
+
+    private void paging(HttpServletRequest request, HttpServletResponse response, List<Post> listResource) {
+        String sPage = request.getParameter("page");
+        int currentPage = 1;
+        int offset = 1;
+        if (sPage != null) {
+            currentPage = Integer.valueOf(sPage);
+        }
+        int recordBegin = (currentPage - 1) * offset;
+        int recordEnd = recordBegin + offset - 1;
+        List<Post> listPostPerPage = new ArrayList<>();
+        for (int i = 0; i < listResource.size(); i++) {
+            if (i >= recordBegin && i <= recordEnd) {
+                listPostPerPage.add(listResource.get(i));
+            }
+        }
+        request.setAttribute(Constants.TOTAL_PAGE, Math.ceil(listResource.size() * 1.0 / offset));
+        request.setAttribute(Constants.CURRENT_PAGE, currentPage);
+        request.setAttribute(Constants.RESULT_SEARCH, listPostPerPage);
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
