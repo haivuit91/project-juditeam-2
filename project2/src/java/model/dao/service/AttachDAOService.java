@@ -15,6 +15,7 @@ import model.entities.Attach;
  */
 public interface AttachDAOService {
     List<Attach> getAttach();
+    List<Attach> getAttachByPostID(int postID);
     Attach getAttachByID(int attachID);
     boolean insertAttach(Attach attach);
     boolean updateAttach(Attach attach);

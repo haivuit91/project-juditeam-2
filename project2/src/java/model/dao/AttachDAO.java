@@ -143,4 +143,23 @@ public class AttachDAO implements AttachDAOService {
         }
         return attach;
     }
+
+    @Override
+    public List<Attach> getAttachByPostID(int postID) {
+         List<Attach> listAttach = new ArrayList<>();
+        String sql = "select * from tbl_attach where postID=? and isActive=True ";
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement sm = conn.prepareStatement(sql);
+            sm.setInt(1, postID);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                listAttach.add(getItem(rs));
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("getAttachByPostID error: " + e.getMessage());
+        }
+        return listAttach;
+    }
 }
