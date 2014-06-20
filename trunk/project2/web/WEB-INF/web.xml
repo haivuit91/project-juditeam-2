@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>SerarchServlet</servlet-name>
-        <servlet-class>controller.servlet.SerarchServlet</servlet-class>
+        <servlet-class>controller.servlet.SearchServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TeacherPost</servlet-name>
