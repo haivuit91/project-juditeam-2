@@ -63,14 +63,14 @@ eated on : Jun 12, 2014, 7:14:09 AM
        <c:if test="${p == 'view_post'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
-                <%@include file="module/viewtopic.jsp" %>
+                <%@include file="module/view-topic.jsp" %>
             </div>
         </c:if>
         <!--Content Information-->
         <div class="container">
             <div class="row">
                 <c:if test="${p == 'new-toppic' }">
-                    <%@include file="module/newtopic.jsp" %>
+                    <%@include file="module/new-topic.jsp" %>
                 </c:if>     
                 <c:if test="${p == 'login-logout' }">
                     <%@include file="module/login-logout.jsp" %>
