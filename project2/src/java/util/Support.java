@@ -17,4 +17,9 @@ public class Support {
         Date currentDate = new Date();
         return new java.sql.Date(currentDate.getTime());
     }
+    public static String marker(String resource,String keySearch){
+        if(keySearch != null)
+            return resource.replaceAll(keySearch," <span class=\"marker\">"+keySearch+"</span>");
+        return resource;
+    }
 }

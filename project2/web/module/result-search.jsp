@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
         <title>JSP Page</title>
     </head>
     <body>
@@ -22,11 +23,11 @@
                 <div class="col-md-9">Tất cả chủ đề</div>
                 <div class="col-md-3">Cập nhật mới nhất</div>
             </div>
-
             <!-- Table -->
             <table class="table">
                 <c:forEach items="${result_search}" var="val" >
                     <tr>
+                    
                         <td class="col-md-9">
                             <p><a href="/project2/detail?action=view&id=${val.postID}">${val.title}</a></p>
                             <p>Danh mục: ${val.getCategory().categoryName}</p>
