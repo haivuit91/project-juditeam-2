@@ -40,7 +40,7 @@ import util.Support;
  *
  * @author Tuanka
  */
-public class TeacherPost extends HttpServlet {
+public class PostServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -130,11 +130,11 @@ public class TeacherPost extends HttpServlet {
         String shortTitle = request.getParameter("short_title");
         String sCategoryID = request.getParameter("category_id");
         String content = request.getParameter("content");
-        
+        String link = null;
         Category category = categoryService.getCategoryByID(Integer.valueOf(sCategoryID));
          System.out.println(category.getCategoryID()+"");
         User user = (User)request.getSession().getAttribute(Constants.CURRENT_USER);
-        Post post = new Post(0, title, shortTitle, content, Support.getDatePost(), user, category, true);
+        Post post = new Post(0, title, shortTitle, content,link, Support.getDatePost(), user, category, true);
         if(postService.insertPost(post)){
             response.sendRedirect("/project2/index");
         }else{
@@ -154,9 +154,9 @@ public class TeacherPost extends HttpServlet {
         List<KinhNghiem> listKinhNghiem = kinhNghiemService.getKinhNghiemByPostID(postID);
         List<HuongDan> listHuongDan = huongDanService.getHuongDanByPostID(postID);
         List<Comment> listComment = commentService.getCommentByPostID(postID);
-        post.setBaiTapList(listBaiTap);
-        post.setHuongDanList(listHuongDan);
-        post.setKinhNghiemList(listKinhNghiem);
+     //   post.setBaiTapList(listBaiTap);
+   //     post.setHuongDanList(listHuongDan);
+   //     post.setKinhNghiemList(listKinhNghiem);
         post.setCommentList(listComment);
         request.setAttribute(Constants.CURRENT_POST, post);
         request.setAttribute(Constants.PAGE,"view_post");
