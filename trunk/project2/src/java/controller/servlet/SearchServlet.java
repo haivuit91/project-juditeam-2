@@ -16,6 +16,7 @@ import model.dao.PostDAO;
 import model.dao.service.PostDAOService;
 import model.entities.Post;
 import util.Constants;
+import util.Support;
 
 /**
  *
@@ -59,7 +60,7 @@ public class SearchServlet extends HttpServlet {
        request.setAttribute(Constants.PAGE, "search-cb");
         request.setAttribute(Constants.ACTION, "search-cb");
         request.setAttribute(Constants.KEY_SEARCH, keySearch);
-        paging(request, response, listResource);
+        paging(request, response, listResource,keySearch);
     }
 
     private void searchNC(HttpServletRequest request, HttpServletResponse response) {
@@ -75,7 +76,7 @@ public class SearchServlet extends HttpServlet {
 
     }
 
-    private void paging(HttpServletRequest request, HttpServletResponse response, List<Post> listResource) {
+    private void paging(HttpServletRequest request, HttpServletResponse response, List<Post> listResource,String keySearch) {
         String sPage = request.getParameter("page");
         int currentPage = 1;
         int offset = 1;
@@ -87,7 +88,9 @@ public class SearchServlet extends HttpServlet {
         List<Post> listPostPerPage = new ArrayList<>();
         for (int i = 0; i < listResource.size(); i++) {
             if (i >= recordBegin && i <= recordEnd) {
-                listPostPerPage.add(listResource.get(i));
+                Post item = listResource.get(i);
+                item.setTitle(Support.marker(item.getTitle(), keySearch));
+                listPostPerPage.add(item);
             }
         }
         request.setAttribute(Constants.TOTAL_PAGE, Math.ceil(listResource.size() * 1.0 / offset));
