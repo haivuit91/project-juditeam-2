@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model.entities;
 
 import java.sql.Date;
@@ -14,7 +13,7 @@ import java.util.List;
  * @author Tuanka
  */
 public class Post {
-    
+
     private int postID;
     private String title;
     private String shortTitle;
@@ -24,11 +23,10 @@ public class Post {
     private Category category;
     private boolean isActive;
     private List<Comment> commentList = null;
-    private List<KinhNghiem> kinhNghiemList = null;
-    private List<HuongDan> huongDanList = null;
-    private List<BaiTap> baiTapList = null;
+    private List<Attach> attachList = null;
+
     public Post() {
-        
+
     }
 
     public Post(int postID, String title, String shortTitle, String content, Date datePost, User user, Category category, boolean isActive) {
@@ -114,28 +112,11 @@ public class Post {
         this.commentList = commentList;
     }
 
-    public List<KinhNghiem> getKinhNghiemList() {
-        return kinhNghiemList;
+    public List<Attach> getAttachList() {
+        return attachList;
     }
 
-    public void setKinhNghiemList(List<KinhNghiem> kinhNghiemList) {
-        this.kinhNghiemList = kinhNghiemList;
+    public void setAttachList(List<Attach> attachList) {
+        this.attachList = attachList;
     }
-
-    public List<HuongDan> getHuongDanList() {
-        return huongDanList;
-    }
-
-    public void setHuongDanList(List<HuongDan> huongDanList) {
-        this.huongDanList = huongDanList;
-    }
-
-    public List<BaiTap> getBaiTapList() {
-        return baiTapList;
-    }
-
-    public void setBaiTapList(List<BaiTap> baiTapList) {
-        this.baiTapList = baiTapList;
-    }
-    
 }
