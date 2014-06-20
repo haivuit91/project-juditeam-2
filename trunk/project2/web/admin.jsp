@@ -47,9 +47,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
         <!--Content Seacher-->
         <!--Content Information-->
         <div class="container">
-            <div class="row">
-                <%@include file="admin/manage-post.jsp" %>
-            </div>
+           
         </div>
         <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
