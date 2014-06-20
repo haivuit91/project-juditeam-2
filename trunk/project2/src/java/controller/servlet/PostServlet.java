@@ -14,23 +14,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.dao.BaiTapDAO;
 import model.dao.CategoryDAO;
 import model.dao.CommentDAO;
-import model.dao.HuongDanDAO;
-import model.dao.KinhNghiemDAO;
 import model.dao.PostDAO;
-import model.dao.service.BaiTapDAOService;
 import model.dao.service.CategoryDAOService;
 import model.dao.service.CommentDAOService;
-import model.dao.service.HuongDanDAOService;
-import model.dao.service.KinhNghiemDAOService;
 import model.dao.service.PostDAOService;
-import model.entities.BaiTap;
 import model.entities.Category;
 import model.entities.Comment;
-import model.entities.HuongDan;
-import model.entities.KinhNghiem;
 import model.entities.Post;
 import model.entities.User;
 import util.Constants;
@@ -59,7 +50,7 @@ public class PostServlet extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "new-toppic":
-                    requestNewPost(request, response);
+                    //                requestNewPost(request, response);
                     break;
             }
         }
@@ -81,10 +72,10 @@ public class PostServlet extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "add-post":
-                    addNewPost(request, response);
+                    //           addNewPost(request, response);
                     break;
                 case "edit-post":
-                    editPost(request, response);
+                    //             editPost(request, response);
                     break;
                 case "add-info":
                     addInfo(request, response);
@@ -92,85 +83,87 @@ public class PostServlet extends HttpServlet {
             }
         }
     }
-    private  void addInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PostDAOService postService = PostDAO.getInstance();
-        String type = request.getParameter("type");
-        String content = request.getParameter("content");
-        System.out.println(type);
-        System.out.println(content);
-        System.out.println(request.getParameter("post_id"));
-        
-        int postID = Integer.valueOf(request.getParameter("post_id"));
-      
-        Post post = postService.getPostByID(postID);
-        Boolean isSuccess = false;
-        switch(type){
-            case "kinh_nghiem":
-                KinhNghiem kinhNghiem = new KinhNghiem(0, content, post, true);
-                KinhNghiemDAOService kinhNghiemService = KinhNghiemDAO.getInstance();
-                isSuccess = kinhNghiemService.insertKinhNgiem(kinhNghiem);
-                break;
-            case "huong_dan":
-                HuongDan huongDan = new HuongDan(0, content, post, true);
-                HuongDanDAOService huongDanService = HuongDanDAO.getInstance();
-                isSuccess = huongDanService.insertHuongDan(huongDan);
-                break;
-            case "bai_tap":
-                BaiTap baiTap = new BaiTap(0,content, post, true);
-                BaiTapDAOService baiTapService = BaiTapDAO.getInstance();
-                isSuccess = baiTapService.insertBaiTap(baiTap);
-                break;
-        }
-        refreshViewPost(request, response,postID);
-    }
-    private void addNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoryDAOService categoryService = CategoryDAO.getInstance();
-        PostDAOService postService = PostDAO.getInstance();
-        String title = request.getParameter("title");
-        String shortTitle = request.getParameter("short_title");
-        String sCategoryID = request.getParameter("category_id");
-        String content = request.getParameter("content");
-        String link = null;
-        Category category = categoryService.getCategoryByID(Integer.valueOf(sCategoryID));
-         System.out.println(category.getCategoryID()+"");
-        User user = (User)request.getSession().getAttribute(Constants.CURRENT_USER);
-        Post post = new Post(0, title, shortTitle, content,link, Support.getDatePost(), user, category, true);
-        if(postService.insertPost(post)){
-            response.sendRedirect("/project2/index");
-        }else{
-            request.setAttribute(Constants.PAGE, "new-toppic");
-            request.setAttribute(Constants.CURRENT_POST, post);
-            request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
-        }
-    }
-    private void refreshViewPost(HttpServletRequest request, HttpServletResponse response,int postID) throws ServletException, IOException {
-         PostDAOService postService = PostDAO.getInstance();
-        BaiTapDAOService baiTapService = BaiTapDAO.getInstance();
-        KinhNghiemDAOService kinhNghiemService = KinhNghiemDAO.getInstance();
-        HuongDanDAOService huongDanService = HuongDanDAO.getInstance();
-        CommentDAOService commentService = CommentDAO.getInstance();
-        Post post = postService.getPostByID(postID);
-        List<BaiTap> listBaiTap = baiTapService.listBaiTapByPostID(postID);
-        List<KinhNghiem> listKinhNghiem = kinhNghiemService.getKinhNghiemByPostID(postID);
-        List<HuongDan> listHuongDan = huongDanService.getHuongDanByPostID(postID);
-        List<Comment> listComment = commentService.getCommentByPostID(postID);
-     //   post.setBaiTapList(listBaiTap);
-   //     post.setHuongDanList(listHuongDan);
-   //     post.setKinhNghiemList(listKinhNghiem);
-        post.setCommentList(listComment);
-        request.setAttribute(Constants.CURRENT_POST, post);
-        request.setAttribute(Constants.PAGE,"view_post");
-        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
-    }
-    private void editPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
-    }
+    private void addInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        PostDAOService postService = PostDAO.getInstance();
+//        String type = request.getParameter("type");
+//        String content = request.getParameter("content");
+//        System.out.println(type);
+//        System.out.println(content);
+//        System.out.println(request.getParameter("post_id"));
+//        
+//        int postID = Integer.valueOf(request.getParameter("post_id"));
+//      
+//        Post post = postService.getPostByID(postID);
+//        Boolean isSuccess = false;
+//        switch(type){
+//            case "kinh_nghiem":
+//                KinhNghiem kinhNghiem = new KinhNghiem(0, content, post, true);
+//                KinhNghiemDAOService kinhNghiemService = KinhNghiemDAO.getInstance();
+//                isSuccess = kinhNghiemService.insertKinhNgiem(kinhNghiem);
+//                break;
+//            case "huong_dan":
+//                HuongDan huongDan = new HuongDan(0, content, post, true);
+//                HuongDanDAOService huongDanService = HuongDanDAO.getInstance();
+//                isSuccess = huongDanService.insertHuongDan(huongDan);
+//                break;
+//            case "bai_tap":
+//                BaiTap baiTap = new BaiTap(0,content, post, true);
+//                BaiTapDAOService baiTapService = BaiTapDAO.getInstance();
+//                isSuccess = baiTapService.insertBaiTap(baiTap);
+//                break;
+//        }
+//        refreshViewPost(request, response,postID);
+//    }
+//    private void addNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        CategoryDAOService categoryService = CategoryDAO.getInstance();
+//        PostDAOService postService = PostDAO.getInstance();
+//        String title = request.getParameter("title");
+//        String shortTitle = request.getParameter("short_title");
+//        String sCategoryID = request.getParameter("category_id");
+//        String content = request.getParameter("content");
+//        String link = null;
+//        Category category = categoryService.getCategoryByID(Integer.valueOf(sCategoryID));
+//         System.out.println(category.getCategoryID()+"");
+//        User user = (User)request.getSession().getAttribute(Constants.CURRENT_USER);
+//        Post post = new Post(0, title, shortTitle, content,link, Support.getDatePost(), user, category, true);
+//        if(postService.insertPost(post)){
+//            response.sendRedirect("/project2/index");
+//        }else{
+//            request.setAttribute(Constants.PAGE, "new-toppic");
+//            request.setAttribute(Constants.CURRENT_POST, post);
+//            request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+//        }
+//    }
+//    private void refreshViewPost(HttpServletRequest request, HttpServletResponse response,int postID) throws ServletException, IOException {
+//         PostDAOService postService = PostDAO.getInstance();
+//        BaiTapDAOService baiTapService = BaiTapDAO.getInstance();
+//        KinhNghiemDAOService kinhNghiemService = KinhNghiemDAO.getInstance();
+//        HuongDanDAOService huongDanService = HuongDanDAO.getInstance();
+//        CommentDAOService commentService = CommentDAO.getInstance();
+//        Post post = postService.getPostByID(postID);
+//        List<BaiTap> listBaiTap = baiTapService.listBaiTapByPostID(postID);
+//        List<KinhNghiem> listKinhNghiem = kinhNghiemService.getKinhNghiemByPostID(postID);
+//        List<HuongDan> listHuongDan = huongDanService.getHuongDanByPostID(postID);
+//        List<Comment> listComment = commentService.getCommentByPostID(postID);
+//     //   post.setBaiTapList(listBaiTap);
+//   //     post.setHuongDanList(listHuongDan);
+//   //     post.setKinhNghiemList(listKinhNghiem);
+//        post.setCommentList(listComment);
+//        request.setAttribute(Constants.CURRENT_POST, post);
+//        request.setAttribute(Constants.PAGE,"view_post");
+//        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+//    }
+//    private void editPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+//    }
 
-    private void requestNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute(Constants.PAGE, "new-toppic");
-        CategoryDAOService catService = CategoryDAO.getInstance();
-        request.setAttribute(Constants.LIST_CATEGORY, catService.getCategories());
-        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+//    private void requestNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        request.setAttribute(Constants.PAGE, "new-toppic");
+//        CategoryDAOService catService = CategoryDAO.getInstance();
+//        request.setAttribute(Constants.LIST_CATEGORY, catService.getCategories());
+//        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+//    }
     }
 }
