@@ -15,8 +15,8 @@
     <body>
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <c:if test="${result_search != null}">
-                <div class="panel-heading" style="text-align: center;color:red"> ${result_search.size()!= '0' ? result_search.size():'Không tìm thấy'} kết quả  cho từ khóa ${key_search}</div>
+            <c:if test="${total_result != null}">
+                <div class="panel-heading" style="text-align: center;color:red"> ${total_result != '0' ? total_result:' Không tìm thấy'} kết quả ${total_result == '0' ? '':'được tìm thấy'} </div>
             </c:if>
             <div class="panel-body" style="font-weight: bold">
                 <div class="col-md-9">Tất cả chủ đề</div>
@@ -36,5 +36,30 @@
                 </c:forEach>
             </table>
         </div>
+        <!--paging seach -->
+        <c:if test="${action == 'search-cb'}">
+            <c:forEach begin="1" end="${total_page}" var="i">
+                <c:if test="${current_page != i}">
+                    <a href="search?key_search=${key_search}&action=search-cb&page=${i}" >${i}</a>
+                </c:if>
+                <c:if test="${current_page == i}">
+                    ${i}
+                </c:if>
+            </c:forEach>
+        </c:if>
+        <!--paging default -->
+        <c:if test="${action == 'load-default'}">
+            <c:forEach begin="1" end="${total_page}" var="i">
+                <c:if test="${current_page != i}">
+                    <a href="index?page=${i}" >${i}</a>
+                </c:if>
+                <c:if test="${current_page == i}">
+                    ${i}
+                </c:if>
+            </c:forEach>
+        </c:if>
+
+        <!--end paging -->
+
     </body>
 </html>

@@ -21,7 +21,7 @@
 
                     <div class="col-md-10 col-md-offset-1" style="text-align:center">
                         <div class="col-md-12">
-                            <input id="key_search" type="text" name="key_search" class="form-control">
+                            <input id="key_search" type="text" name="key_search" value="${key_search}" class="form-control">
                         </div><!-- /input-group -->
                         <div class="col-md-1 col-md-offset-10" style="margin-top:5px">
                             <button  type="submit" name="action" value="search-cb" class="btn btn-primary">Tìm kiếm </button>
