@@ -118,7 +118,7 @@ public class PostDAO implements PostDAOService {
     @Override
     public List<Post> getPostByCatID(int catID) {
         List<Post> listPost = new ArrayList<>();
-        String sql = "select * from tbl_Post where isActive = ? and categoryID =?";
+        String sql = "select * from tbl_Post where isActive = 1 and categoryID =?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -140,7 +140,6 @@ public class PostDAO implements PostDAOService {
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
         }
-
         return listPost;
     }
 
@@ -216,17 +215,6 @@ public class PostDAO implements PostDAOService {
             ResultSet rs = sm.executeQuery(sql);
             System.out.println(sql);
             while (rs.next()) {
-//                Post post = new Post();
-//                post.setPostID(rs.getInt("postID"));
-//                post.setTitle(rs.getString("title"));
-//                post.setShortTitle(rs.getString("shortTitle"));
-//                post.setContent(rs.getString("content"));
-//                post.setDatePost(rs.getDate("datePost"));
-//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-//                post.setUser(user);
-//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-//                post.setCategory(category);
-//                post.setActive(true);
                 listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -249,16 +237,6 @@ public class PostDAO implements PostDAOService {
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
-//                Post post = new Post();
-//                post.setTitle(rs.getString("title"));
-//                post.setShortTitle(rs.getString("shortTitle"));
-//                post.setContent(rs.getString("content"));
-//                post.setDatePost(rs.getDate("datePost"));
-//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-//                post.setUser(user);
-//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-//                post.setCategory(category);
-//                post.setActive(true);
                 listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -462,6 +440,25 @@ public class PostDAO implements PostDAOService {
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
+        }
+        return listPost;
+    }
+
+    @Override
+    public List<Post> searchByCatID(int catID, String keySearch) {
+        List<Post> listPost = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            String sql = "select * from tbl_post where (summary like '%" + keySearch + "%' or title like '%" + keySearch + "%') and categoryID=" + catID + " ";
+            System.out.println("sql: "+ sql);
+            Statement sm = conn.createStatement();
+            ResultSet rs = sm.executeQuery(sql);
+            System.out.println(sql);
+            while (rs.next()) {
+                listPost.add(getItem(rs));
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getStackTrace());
         }
         return listPost;
     }

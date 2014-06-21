@@ -97,6 +97,7 @@ public interface PostDAOService {
     List<Post> searchByKinhNghiem(String key);
 
     List<Post> searchByShortTitle(String key);
+    List<Post> searchByCatID(int catID, String keySearch);
 
     /**
      * enable or disable post

@@ -45,6 +45,7 @@ public class Constants {
     public static final String CURRENT_POST = "current_post";
     public static final String RESULT_SEARCH = "result_search";
     public static final String KEY_SEARCH = "key_search";
+    public static final String TYPE_SEARCH = "type_search";
     public static final String RESULT_LOGIN = "result_login";
     public static final String RESULT_SIGNUP = "result_singup";
     public static final String LIST_BAI_TAP = "list_bai_tap";

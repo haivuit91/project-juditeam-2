@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.CategoryDAO;
 import model.dao.PostDAO;
 import model.dao.service.PostDAOService;
 import model.entities.Post;
@@ -45,38 +46,49 @@ public class SearchServlet extends HttpServlet {
             case "search-nc":
                 searchNC(request, response);
                 break;
+            case "search-cat":
+//                searchN(request, response);
+                break;
         }
         request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+    }
+
+    private void searchCat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PostDAOService postService = PostDAO.getInstance();
+        List<Post> listResource = null;
+        int catID = Integer.valueOf("id");
+        String keySearch = request.getParameter("key_search");
+        listResource = postService.getPostByCatID(catID);
+        request.setAttribute(Constants.TOTAL_RESULT, listResource.size());
+        request.setAttribute(Constants.PAGE, "search-cb");
+        request.setAttribute(Constants.ACTION, "search-cb");
+        paging(request, response, listResource, keySearch);
     }
 
     private void searchCB(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PostDAOService postService = PostDAO.getInstance();
         List<Post> listResource = null;
         String keySearch = request.getParameter("key_search");
-        
         listResource = postService.searchByTitle(keySearch);
-        
-       request.setAttribute(Constants.TOTAL_RESULT,listResource.size());
-       request.setAttribute(Constants.PAGE, "search-cb");
+        request.setAttribute(Constants.TOTAL_RESULT, listResource.size());
+        request.setAttribute(Constants.PAGE, "search-cb");
         request.setAttribute(Constants.ACTION, "search-cb");
         request.setAttribute(Constants.KEY_SEARCH, keySearch);
-        paging(request, response, listResource,keySearch);
+        paging(request, response, listResource, keySearch);
     }
 
     private void searchNC(HttpServletRequest request, HttpServletResponse response) {
-        String title = request.getParameter("title");
-        String content = request.getParameter("content");
-        String huongDan = request.getParameter("huong-dan");
-        String baiTap = request.getParameter("bai-tap");
-        String kinhNghem = request.getParameter("kinh-nghiem");
-
+        String keySearch = request.getParameter("key-search");
+        int catID = Integer.valueOf(request.getParameter("type"));
         PostDAOService postService = PostDAO.getInstance();
-        request.setAttribute(Constants.RESULT_SEARCH, postService.searchByAdvance(title, content, baiTap, huongDan, kinhNghem));
+        request.setAttribute(Constants.KEY_SEARCH,keySearch);
+        request.setAttribute(Constants.TYPE_SEARCH,catID);
+        paging(request, response, postService.searchByCatID(catID, keySearch), keySearch);
         request.setAttribute(Constants.PAGE, "seach-nc");
-
+        request.setAttribute(Constants.LIST_CATEGORY, CategoryDAO.getInstance().getCategories());
     }
 
-    private void paging(HttpServletRequest request, HttpServletResponse response, List<Post> listResource,String keySearch) {
+    private void paging(HttpServletRequest request, HttpServletResponse response, List<Post> listResource, String keySearch) {
         String sPage = request.getParameter("page");
         int currentPage = 1;
         int offset = Constants.defaultOffset;
@@ -89,6 +101,7 @@ public class SearchServlet extends HttpServlet {
         for (int i = 0; i < listResource.size(); i++) {
             if (i >= recordBegin && i <= recordEnd) {
                 Post item = listResource.get(i);
+                item.setSummary(Support.marker(item.getSummary(), keySearch));
                 item.setTitle(Support.marker(item.getTitle(), keySearch));
                 listPostPerPage.add(item);
             }
