@@ -46,6 +46,7 @@ public class PostServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String action = request.getParameter(Constants.ACTION);
         if (action != null) {
             switch (action) {
@@ -68,6 +69,7 @@ public class PostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String title = null;
         String shortTitle = null;
         String sCategoryID = null;
@@ -85,9 +87,10 @@ public class PostServlet extends HttpServlet {
                 if (fileItemStream.isFormField()) {
                     String fieldName = fileItemStream.getFieldName();
                     InputStream is = fileItemStream.openStream();
+                    
                     byte[] b = new byte[is.available()];
                     is.read(b);
-                    String value = new String(b);
+                    String value = new String(b,"UTF-8");
                     if (fieldName.equals("action")) {
                         action = value;
                     }
