@@ -12,6 +12,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
         <title>Trang chủ</title>
         <script src="js/script.js" type="text/javascript"> </script>
          <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+         <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     
     <body>
@@ -33,7 +34,8 @@ eated on : Jun 12, 2014, 7:14:09 AM
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/project2/index">Trang chủ</a></li>
                             <c:if test="${current_user != null}">
-                            <li><a href="/project2/teacher-post?action=new-toppic">Tạo mới</a></li>
+                            <li><a href="/project2/postmanage?action=load">Quản trị</a></li>
+                            <li><a href="/project2/post?action=new-topic">Tạo mới</a></li>
                             </c:if>
                             <c:if test="${current_user == null}">
                             <li><a href="/project2/authen?action=login-logout">Đăng nhập|Đăng ký</a></li>
@@ -45,6 +47,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
                 </div><!--/.nav-collapse -->
             </div>
         </div>
+  
         <!--Content Seacher-->
         <c:if test="${p == 'login' || p == null}">
             <%@include file="module/seach-cb.jsp" %>

@@ -23,6 +23,7 @@ public class Constants {
     /**
      * Password of Admin's Email
      */
+    public static final int defaultOffset = 2;
     public static final String PASSWORD_EMAIL = "congtrinh";
 
     public static final String URL_HOME = "home.jsp";
@@ -53,10 +54,5 @@ public class Constants {
     public static final String CURRENT_PAGE = "current_page";
     public static final String TOTAL_PAGE = "total_page";
     public static final String TOTAL_RESULT = "total_result";
-    
-   
-    
-    
-    
-    
+    public static final String LIST_POST = "list_post";
 }
