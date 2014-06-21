@@ -66,7 +66,35 @@
                 </div>
 
             </div>
-            <div class="col-md-2">Menu</div>
+            <div class="col-md-2 ">
+                <div class="col-md-12 alert-success"style="font-weight: bold;text-align: center">
+                    <p>
+                        DANH MỤC
+                    </p>    
+                </div>
+                <div class="col-md-12 alert-info"style=";text-align: center;margin-top: 10px">
+                    <table class="col-md-12 table-hover">
+                        <tr style="border-bottom:#269abc solid thin">
+                            <td>
+                                <a href="#" >Muc luc 1</a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom:#269abc solid thin">
+                            <td>Muc luc 2</td>
+                        </tr>
+                        <tr style="border-bottom:#269abc solid thin">
+                            <td>Muc luc 3</td>
+                        </tr>
+                        <tr style="border-bottom:#269abc solid thin">
+                            <td>Muc luc 4</td>
+                        </tr>
+                        <tr style="border-bottom:#269abc solid thin">
+                            <td>Muc luc 5</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
 
         </div>
         <script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
