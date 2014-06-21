@@ -67,7 +67,6 @@ public class ViewPostServlet extends HttpServlet {
         String action = request.getParameter(Constants.ACTION);
        
     }
-
    
     private void refreshViewPost(HttpServletRequest request, HttpServletResponse response, int postID) throws ServletException, IOException {
         PostDAOService postService = PostDAO.getInstance();

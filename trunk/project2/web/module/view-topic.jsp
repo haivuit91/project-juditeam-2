@@ -49,7 +49,7 @@
                                 <div class="col-md-10 alert-info">
                                     <label>Bình luận</label>
                                     <form action="comment" method="post">
-                                        <input type="text" name="id" readonly value="${current_post.postID}"/>
+                                        <input type="text" name="id" readonly value="${current_post.postID}" style="display: none"/>
                                         <textarea class="col-md-12" name="content" style="padding: 5px;height:400px"></textarea>
                                         <div class="col-md-12" style="margin:20px 0px">
                                             <div class="input-group">
@@ -67,12 +67,12 @@
                 </div>
             </div>
             <div class="col-md-2 ">
-                <div class="col-md-12 alert-success"style="font-weight: bold;text-align: center">
+                <div class="col-md-12 alert-success" style="font-weight: bold;text-align: center">
                     <p>
                         DANH MỤC
                     </p>    
                 </div>
-                <div class="col-md-12 alert-info"style=";text-align: center;margin-top: 10px">
+                <div class="col-md-12 alert-info" style=";text-align: center;margin-top: 10px">
                     <table class="col-md-12 table-hover">
                         <tr style="border-bottom:#269abc solid thin">
                             <td>

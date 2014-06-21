@@ -18,57 +18,38 @@
         </style>
     </head>
     <body>
-        <form action="post" method="post">
+        <form action="post" name="newtopic" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-body" style="text-align: center">
-                        <h5 style="font-weight:bold"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp; TẠO CHỦ ĐỀ MỚI</h5>
+                        <h5 style="font-weight:bold"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp; THÊM BÀI VIẾT</h5>
                     </div>
                 </div>
                 <div class="panel panel-body" style="background:#d8d8dc">
                     <div class="form-group">
                         <div class="col-md-12" >
-                            <label>Tiêu đề</label>
+                            <label>Tên tiêu đề</label>
                         </div>
                         <div class="col-md-12" >
-                            <input type="text" name="title" class="form-control" id="inputEmail3" >
+                            <input type="text" name="title" value="${current_post.title}" class="form-control" id="inputEmail3" >
                         </div>
                     </div>  
-                    <div class="form-group">
-                        <div class="col-md-12" >
-                            <label>Link</label>
-                        </div>
-                        <div class="col-md-12" >
-                            <input type="text" name="short_title" class="form-control" id="inputEmail3" >
-                        </div>
-                    </div>   
                     <div class="form-group">
                         <div class="col-md-12" >
                             <label>Tên rút gọn</label>
                         </div>
                         <div class="col-md-12" >
-                            <input type="text" name="short_title" class="form-control" id="inputEmail3" >
+                            <input type="text" name="short-title" value="${current_post.shortTitle}" class="form-control" id="inputEmail3" >
                         </div>
                     </div>   
-
-                    <div class="form-group">
-                        <div class="col-md-12" >
-                            <label>Link</label>
-                        </div>
-                        <div class="col-md-12" >
-                            <input type="text" name="short_title" class="form-control" id="inputEmail3" >
-                        </div>
-                    </div>   
-
-
                     <div class="form-group">
                         <div class="col-md-12" >
                             <label>Danh mục</label>
                         </div>
                         <div class="col-md-12">
-                            <select  class="form-control" name="category_id">
+                            <select  class="form-control" name="category-id">
                                 <c:forEach items="${list_cat}" var="val" >
-                                    <option value="${val.categoryID}" >${val.categoryName}</option>
+                                    <option value="${val.categoryID}" ${val.categoryID== current.category.categoryID ? 'selected':''}>${val.categoryName}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -78,12 +59,21 @@
                             <label>Nôi dung</label>
                         </div>
                         <div class="col-md-12" >
-                            <textarea class="form-control" name="content" rows="5"></textarea>
+                            <textarea class="form-control" name="content" rows="5">${current_post.content}</textarea>
                         </div>
                     </div>  
                     <div class="form-group">
+                        <div class="col-md-12" >
+                            <label>Liên kết</label>
+                        </div>
+                        <div class="col-md-12" >
+                            <input type="text" name="link" value="${current_post.link}" class="form-control" id="inputEmail3" />
+                        </div>
+                    </div>   
+
+                    <div class="form-group">
                         <div class="col-md-4 col-md-offset-8" >
-                            <button type="submit" class="btn btn-primary" style="margin-top:10px" value="add-topic" name="action">Tiếp tục</button>
+                            <button type="submit"  value="add-topic" name="action" class="btn btn-primary" style="margin-top:10px">Tiếp tục</button>
                             <button type="reset" class="btn btn-warning" style="margin-top:10px" name="action">Làm lại</button>
                         </div>
                     </div>  
@@ -98,16 +88,16 @@
                     </div>
                 </div>
             </div>
-        </form>
-        <div class="col-md-3 alert-info">
-            <center>
-                <img class="img-thumbnail" style="width:180px;height:180px;margin-top:80px" src="#">                
-            </center>
-            <input type="file" class="btn btn-default" style="margin-top:10px">
-            <input type="text" class="form-control" style="margin-top: 5px"placeholder="Link ảnh">
-            <div class="col-md-4 col-md-offset-8" style="margin-top: 10px;margin-bottom: 20px">
-                <button type="submit" class="btn bg-primary">Upload</button>
+            <div class="col-md-3 alert-info" style="position: fixed; margin-left: 780px">
+                <center>
+                    <img class="img-thumbnail" style="width:180px;height:180px;margin-top:80px" src="${url_image}">                
+                </center>
+                <input type="file" name="file" class="btn btn-default" style="margin-top:10px; width: 308px"/>
+                <input type="text" value="${url_image}" class="form-control" style="margin-top: 5px" placeholder="Link ảnh"/>
+                <div class="col-md-4 col-md-offset-8" style="margin-top: 10px;margin-bottom: 20px">
+                    <button type="submit" name="action" value="up-load" class="btn bg-primary">Tải lên</button>
+                </div>
             </div>
-        </div>
+        </form>
     </body>
 </html>
