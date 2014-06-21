@@ -4,6 +4,7 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,27 +25,14 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                    <input id="title" name="title" type="text" class="form-control" placeholder="Nhập tên">
+                                    <input id="title" value="${key_search}" name="key-search" type="text" class="form-control" placeholder="Nhập thông tin vần tìm">
                                 </div>
                                 <div class="col-md-6">
-                                    <input id="content" name="content" type="text" class="form-control" placeholder="Nhập công thức">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" >
-                            <div class="col-md-12" style="margin-top:5px;">
-                                <div class="col-md-6">
-                                    <input id="huong_dan" name="huong-dan" type="text" class="form-control" placeholder="Nhập hướng dẫn">
-                                </div>
-                                <div class="col-md-6">
-                                    <input id="bai_tap" name="bai-tap" type="text" class="form-control" placeholder="Nhập bài tập">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" >
-                            <div class="col-md-12" style="margin-top:5px;">
-                                <div class="col-md-12">
-                                    <input id="kinh_nghiem" name="kinh-nghiem" type="text" class="form-control" placeholder="Nhập kinh nghiệm">
+                                    <select class="form-control" name="type">
+                                        <c:forEach items="${list_cat}" var="val">
+                                            <option ${type_search == val.categoryID ? 'selected':''} value="${val.categoryID}">${val.categoryName}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +46,7 @@
                     </div>
                     <!-- /input-group -->
                     <div class="col-md-1">
-                        <a href="/project2/index"  class="label label-success" style="font-size:16;padding:10px">Tìm kiếm cơ bản </a>
+                        <a href="/project2/index"  class="label label-success" style="font-size:16;padding:10px">Tìm kiếm nâng cao </a>
                     </div>
                 </div>
             </div>

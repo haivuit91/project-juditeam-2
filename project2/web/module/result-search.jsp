@@ -27,7 +27,6 @@
             <table class="table">
                 <c:forEach items="${result_search}" var="val" >
                     <tr>
-                    
                         <td class="col-md-9">
                             <p><a href="/project2/detail?action=view&id=${val.postID}">${val.title}</a></p>
                             <p>Danh mục: ${val.getCategory().categoryName}</p>

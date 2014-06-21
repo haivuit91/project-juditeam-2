@@ -18,6 +18,7 @@ public class Post {
     private String title;
     private String shortTitle;
     private String content;
+    private String summary;
     private String link;
     private Date datePost;
     private User user;
@@ -30,11 +31,12 @@ public class Post {
 
     }
 
-    public Post(int postID, String title, String shortTitle, String content,String link, Date datePost, User user, Category category, boolean isActive) {
+    public Post(int postID, String title, String shortTitle, String content,String summary,String link, Date datePost, User user, Category category, boolean isActive) {
         this.postID = postID;
         this.title = title;
         this.shortTitle = shortTitle;
         this.content = content;
+        this.summary = summary;
         this.link = link;
         this.datePost = datePost;
         this.user = user;
@@ -42,6 +44,14 @@ public class Post {
         this.isActive = isActive;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+    
     public int getPostID() {
         return postID;
     }
