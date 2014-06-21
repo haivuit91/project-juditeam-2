@@ -36,6 +36,10 @@
         <servlet-name>PostManagement</servlet-name>
         <servlet-class>controller.servlet.admin.PostManagement</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>controller.servlet.CommentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -59,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>PostManagement</servlet-name>
         <url-pattern>/postmanage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/comment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -62,8 +62,9 @@ eated on : Jun 12, 2014, 7:14:09 AM
             <%@include file="module/seach-nc.jsp" %>
             <div class="container">
                 <%@include file="module/result-search.jsp" %>
-            </div>  </c:if>
-       <c:if test="${p == 'view_post'}">
+            </div>  
+        </c:if>
+       <c:if test="${p == 'view-post'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
                 <%@include file="module/view-topic.jsp" %>
