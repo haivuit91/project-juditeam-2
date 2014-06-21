@@ -44,6 +44,7 @@ public class PostDAO implements PostDAOService {
             post.setTitle(rs.getString("title"));
             post.setShortTitle(rs.getString("shortTitle"));
             post.setContent(rs.getString("content"));
+            post.setSummary(rs.getString("summary"));
             post.setLink(rs.getString("link"));
             post.setDatePost(rs.getDate("datePost"));
             User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
@@ -147,17 +148,18 @@ public class PostDAO implements PostDAOService {
     public boolean insertPost(Post post
     ) {
         boolean isCheck = false;
-        String sql = "insert into tbl_post (title,shortTitle,content,datePost,userID,categoryID,isActive) values(?,?,?,?,?,?,?)";
+        String sql = "insert into tbl_post (title,shortTitle,content,summary,datePost,userID,categoryID,isActive) values(?,?,?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, post.getTitle());
             pstmt.setString(2, post.getShortTitle());
             pstmt.setString(3, post.getContent());
-            pstmt.setDate(4, (Date) post.getDatePost());
-            pstmt.setInt(5, post.getUser().getUserID());
-            pstmt.setInt(6, post.getCategory().getCategoryID());
-            pstmt.setBoolean(7, post.isActive());
+            pstmt.setString(4, post.getSummary());
+            pstmt.setDate(5, (Date) post.getDatePost());
+            pstmt.setInt(6, post.getUser().getUserID());
+            pstmt.setInt(7, post.getCategory().getCategoryID());
+            pstmt.setBoolean(8, post.isActive());
             return pstmt.executeUpdate() == 1;
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -169,17 +171,18 @@ public class PostDAO implements PostDAOService {
     public boolean updatePost(Post post
     ) {
         boolean isCheck = false;
-        String sql = "update tbl_post set title=?,shortTitle=?,content=?,datePost=?,userID=?,categoryID=?,isActive=?";
+        String sql = "update tbl_post set title=?,shortTitle=?,content=?,summary=?,datePost=?,userID=?,categoryID=?,isActive=?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement sm = conn.prepareStatement(sql);
             sm.setString(1, post.getTitle());
             sm.setString(2, post.getShortTitle());
             sm.setString(3, post.getContent());
-            sm.setDate(4, (Date) post.getDatePost());
-            sm.setInt(5, post.getUser().getUserID());
-            sm.setInt(6, post.getCategory().getCategoryID());
-            sm.setBoolean(7, post.isActive());
+            sm.setString(4, post.getSummary());
+            sm.setDate(5, (Date) post.getDatePost());
+            sm.setInt(6, post.getUser().getUserID());
+            sm.setInt(7, post.getCategory().getCategoryID());
+            sm.setBoolean(8, post.isActive());
             return sm.executeUpdate() == 1;
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -208,7 +211,7 @@ public class PostDAO implements PostDAOService {
         List<Post> listPost = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select * from tbl_post where title like '%" + key + "%' ";
+            String sql = "select * from tbl_post where summary like '%" + key + "%' or title like '%" + key + "%' ";
             Statement sm = conn.createStatement();
             ResultSet rs = sm.executeQuery(sql);
             System.out.println(sql);
