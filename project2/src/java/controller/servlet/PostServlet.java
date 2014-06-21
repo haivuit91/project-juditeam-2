@@ -49,8 +49,8 @@ public class PostServlet extends HttpServlet {
         String action = request.getParameter(Constants.ACTION);
         if (action != null) {
             switch (action) {
-                case "new-toppic":
-                    //                requestNewPost(request, response);
+                case "new-topic":
+                    requestNewPost(request, response);
                     break;
             }
         }
@@ -68,23 +68,11 @@ public class PostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String action = request.getParameter(Constants.ACTION);
-        if (action != null) {
-            switch (action) {
-                case "add-post":
-                    //           addNewPost(request, response);
-                    break;
-                case "edit-post":
-                    //             editPost(request, response);
-                    break;
-                case "add-info":
-                    addInfo(request, response);
-                    break;
-            }
-        }
     }
+    
+   
 
-    private void addInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //   private void addInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        PostDAOService postService = PostDAO.getInstance();
 //        String type = request.getParameter("type");
 //        String content = request.getParameter("content");
@@ -158,12 +146,10 @@ public class PostServlet extends HttpServlet {
 //
 //        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
 //    }
-
-//    private void requestNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setAttribute(Constants.PAGE, "new-toppic");
-//        CategoryDAOService catService = CategoryDAO.getInstance();
-//        request.setAttribute(Constants.LIST_CATEGORY, catService.getCategories());
-//        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
-//    }
+    private void requestNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute(Constants.PAGE, "new-toppic");
+        CategoryDAOService catService = CategoryDAO.getInstance();
+        request.setAttribute(Constants.LIST_CATEGORY, catService.getCategories());
+        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
     }
 }

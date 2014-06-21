@@ -40,6 +40,7 @@ public class PostDAO implements PostDAOService {
         Post post = null;
         try {
             post = new Post();
+            post.setPostID(rs.getInt("postID"));
             post.setTitle(rs.getString("title"));
             post.setShortTitle(rs.getString("shortTitle"));
             post.setContent(rs.getString("content"));
@@ -49,7 +50,7 @@ public class PostDAO implements PostDAOService {
             post.setUser(user);
             Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
             post.setCategory(category);
-            post.setActive(true);
+            post.setActive(rs.getBoolean("isActive"));
         } catch (SQLException e) {
             System.err.println("getItem post eror:" + e.getMessage());
         }
@@ -86,10 +87,11 @@ public class PostDAO implements PostDAOService {
     @Override
     public List<Post> getPostByUserID(int userID) {
         List<Post> listPost = new ArrayList<>();
-        String sql = "select * from tbl_Post where isActive = ? and userID =?";
+        String sql = "select * from tbl_Post where userID =?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userID);
             ResultSet rs = pstmt.executeQuery();
             pstmt.setInt(1, userID);
             while (rs.next()) {

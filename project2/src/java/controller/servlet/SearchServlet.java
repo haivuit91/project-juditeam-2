@@ -79,7 +79,7 @@ public class SearchServlet extends HttpServlet {
     private void paging(HttpServletRequest request, HttpServletResponse response, List<Post> listResource,String keySearch) {
         String sPage = request.getParameter("page");
         int currentPage = 1;
-        int offset = 1;
+        int offset = Constants.defaultOffset;
         if (sPage != null) {
             currentPage = Integer.valueOf(sPage);
         }

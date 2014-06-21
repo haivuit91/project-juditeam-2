@@ -12,6 +12,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
         <title>Trang chủ</title>
         <script src="js/script.js" type="text/javascript"></script>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -47,7 +48,17 @@ eated on : Jun 12, 2014, 7:14:09 AM
         <!--Content Seacher-->
         <!--Content Information-->
         <div class="container">
-           
+            <!--thông báo -->
+            ${msgResult}
+            <!--end thông báo -->
+            <div class="row">
+                <c:if test="${p == 'list-post'}">
+                    <%@include file="admin/list-post.jsp" %>
+                </c:if>
+                <c:if test="${p == 'new-topic'}">
+                    <%@include file="module/new-topic.jsp" %>
+                </c:if>
+            </div>
         </div>
         <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>

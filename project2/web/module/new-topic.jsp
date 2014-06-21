@@ -18,7 +18,7 @@
         </style>
     </head>
     <body>
-        <form action="teacher-post" method="post">
+        <form action="post" method="post">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body" style="text-align: center">
@@ -64,7 +64,7 @@
                     </div>  
                     <div class="form-group">
                         <div class="col-md-12" >
-                            <button type="submit" class="btn btn-primary" style="margin-top:10px" value="add-post" name="action">Tạo chủ đề mới</button>
+                            <button type="submit" class="btn btn-primary" style="margin-top:10px" value="add-topic" name="action">Tiếp tục</button>
                             <button type="reset" class="btn btn-warning" style="margin-top:10px" name="action">Làm lại</button>
                         </div>
                     </div>  
