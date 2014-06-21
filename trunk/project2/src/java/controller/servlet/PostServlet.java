@@ -5,26 +5,26 @@
  */
 package controller.servlet;
 
-import java.awt.Point;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStream;
+import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.dao.CategoryDAO;
-import model.dao.CommentDAO;
 import model.dao.PostDAO;
 import model.dao.service.CategoryDAOService;
-import model.dao.service.CommentDAOService;
 import model.dao.service.PostDAOService;
 import model.entities.Category;
-import model.entities.Comment;
 import model.entities.Post;
 import model.entities.User;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.FileItemIterator;
+import org.apache.tomcat.util.http.fileupload.FileItemStream;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import util.Constants;
+import util.FileUpload;
 import util.Support;
 
 /**
@@ -68,9 +68,110 @@ public class PostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        String title = null;
+        String shortTitle = null;
+        String sCategoryID = null;
+        String content = null;
+        String link = null;
+        String action = null;
+        // String pathImage;
+        String imageName = "";
+        boolean isUploadSuccess = false;
+        ServletFileUpload fileUpload = new ServletFileUpload();
+        try {
+            FileItemIterator itr = fileUpload.getItemIterator(request);
+            while (itr.hasNext()) {
+                FileItemStream fileItemStream = itr.next();
+                if (fileItemStream.isFormField()) {
+                    String fieldName = fileItemStream.getFieldName();
+                    InputStream is = fileItemStream.openStream();
+                    byte[] b = new byte[is.available()];
+                    is.read(b);
+                    String value = new String(b);
+                    if (fieldName.equals("action")) {
+                        action = value;
+                    }
+                    if (fieldName.equals("title")) {
+                        title = value;
+                    }
+                    if (fieldName.equals("content")) {
+                        content = value;
+                    }
+                    if (fieldName.equals("short-title")) {
+                        shortTitle = value;
+                    }
+                    if (fieldName.equals("category-id")) {
+                        sCategoryID = value;
+                    }
+                    if (fieldName.equals("link")) {
+                        link = value;
+                    }
+
+                } else {
+                    String realPath = getServletContext().getRealPath("/");
+                    String filePath = realPath.replace("\\build\\web", "\\web\\image\\post");//Duong dan luu file anh
+                    imageName = fileItemStream.getName();
+                    StringTokenizer token = new StringTokenizer(imageName, ".");
+                    String fileNameExtension = "";
+                    while (token.hasMoreElements()) {
+                        fileNameExtension = token.nextElement().toString();
+                    }
+                    System.out.println("img: " + imageName);
+                    if (!imageName.equals("")) {
+                        imageName = Support.randomString();
+                        isUploadSuccess = FileUpload.processFile(filePath, fileItemStream, imageName, fileNameExtension);
+                        imageName += "." + fileNameExtension;
+                    }
+                }
+            }
+            Post currentPost = new Post();
+            currentPost.setTitle(title);
+            currentPost.setShortTitle(shortTitle);
+            currentPost.setCategory(new Category(Integer.valueOf(sCategoryID), "", false));
+            currentPost.setContent(content);
+            currentPost.setDatePost(Support.getDatePost());
+            currentPost.setUser((User) request.getSession().getAttribute(Constants.CURRENT_USER));
+            currentPost.setLink(link);
+            currentPost.setActive(false);
+            request.setAttribute(Constants.CURRENT_POST, currentPost);
+            request.setAttribute(Constants.LIST_CATEGORY, CategoryDAO.getInstance().getCategories());
+            if (action != null) {
+                switch (action) {
+                    case "up-load":
+                        upLoad(request, response, imageName, isUploadSuccess);
+                        break;
+                    case "add-topic":
+                        addTopic(request, response, currentPost);
+                        break;
+                }
+            }
+        } catch (IOException | org.apache.tomcat.util.http.fileupload.FileUploadException e) {
+            response.getWriter().println(e.toString());
+        }
     }
-    
-   
+
+    private void addTopic(HttpServletRequest request, HttpServletResponse response, Post post) throws ServletException, IOException {
+        PostDAOService postService = PostDAO.getInstance();
+        if (postService.insertPost(post)) {
+            request.setAttribute(Constants.MSG_RESULT, "Đã thêm");
+        } else {
+            request.setAttribute(Constants.CURRENT_POST, post);
+            request.setAttribute(Constants.MSG_RESULT, "Lỗi");
+        }
+        request.setAttribute(Constants.PAGE, "new-topic");
+        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+    }
+
+    private void upLoad(HttpServletRequest request, HttpServletResponse response, String imagName, Boolean isSuccess) throws ServletException, IOException {
+        if (isSuccess) {
+            request.setAttribute(Constants.RESULT_UPLOAD, "Hình ảnh đã được tải lên");
+            request.setAttribute(Constants.URL_IMAGE, "http://localhost:8084/project2/image/post/" + imagName);
+        } else {
+            request.setAttribute(Constants.RESULT_UPLOAD, "Lỗi");
+        }
+        request.setAttribute(Constants.PAGE, "new-topic");
+        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
+    }
 
     //   private void addInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        PostDAOService postService = PostDAO.getInstance();
@@ -147,7 +248,7 @@ public class PostServlet extends HttpServlet {
 //        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
 //    }
     private void requestNewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute(Constants.PAGE, "new-toppic");
+        request.setAttribute(Constants.PAGE, "new-topic");
         CategoryDAOService catService = CategoryDAO.getInstance();
         request.setAttribute(Constants.LIST_CATEGORY, catService.getCategories());
         request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);

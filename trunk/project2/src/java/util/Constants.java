@@ -56,4 +56,6 @@ public class Constants {
     public static final String TOTAL_PAGE = "total_page";
     public static final String TOTAL_RESULT = "total_result";
     public static final String LIST_POST = "list_post";
+    public static final String RESULT_UPLOAD = "result_upload";
+    public static final String URL_IMAGE = "url_image";
 }
