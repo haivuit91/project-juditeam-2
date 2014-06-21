@@ -73,7 +73,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
         <!--Content Information-->
         <div class="container">
             <div class="row">
-                <c:if test="${p == 'new-toppic' }">
+                <c:if test="${p == 'new-topic' }">
                     <%@include file="module/new-topic.jsp" %>
                 </c:if>     
                 <c:if test="${p == 'login-logout' }">

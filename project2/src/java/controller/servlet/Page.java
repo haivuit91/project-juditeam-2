@@ -64,8 +64,8 @@ public class Page extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
-                case "new-toppic":
-                    request.setAttribute(util.Constants.PAGE, "new-toppic");
+                case "new-topic":
+                    request.setAttribute(util.Constants.PAGE, "new-topic");
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
