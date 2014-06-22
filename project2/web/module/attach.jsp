@@ -3,7 +3,7 @@
     Created on : Jun 21, 2014, 8:05:37 AM
     Author     : Welcomes
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,40 +14,23 @@
     </head>
     <body>
 
-        <div class="col-md-6 col-md-offset-3 panel panel-heading" style="text-align: center;font-weight: bold;text-transform: uppercase;background: #269abc">
-            Đình kèm tệp
-        </div>
-        <div class="col-md-6 col-md-offset-3" style="border:2px solid #269abc">
+        <div class="col-md-6 col-md-offset-3" style="border:1px solid #DDDDDD;margin-top: 80px">
+            <div class="modal-header">
+                <label style="size: 22px;font-weight: bold">Đính kèm tập tin</label>
+            </div>
             <div class="col-md-12 panel panel-body">
                 <div class="form-group" style="">
-                    <div class="col-md-10 "style="border:1px solid threedhighlight;height:35px; padding: 5px;margin-top: 10px">
-                        <label>Đề 1</label>
-                    </div>
-                    <div class="col-md-2"  style="margin-top: 10px">
-                        <a href="#" class="btn btn-danger">Xóa</a>
-                    </div>
+                    <c:forEach items="${list_attach}" var="item">
+                        <div class="col-md-10 " style="border:1px solid threedhighlight;height:35px; padding: 5px;margin-top: 10px">
+                            <label>${item.title}</label>
+                        </div>
+                        <div class="col-md-2"  style="margin-top: 10px">
+                            <a href="attach?action=del&id=${item.attachID}&post-id=${id}" class="btn btn-danger">Xóa</a>
+                        </div>
+                    </c:forEach>
                 </div>
-                <div class="form-group" style="">
-                    <div class="col-md-10 "style="border:1px solid threedhighlight;height:35px; padding: 5px;margin-top: 10px">
-                        <label>Đề 2</label>
-                    </div>
-                    <div class="col-md-2"  style="margin-top: 10px">
-                        <a href="#" class="btn btn-danger">Xóa</a>
-                    </div>
-                </div>
-                <div class="form-group" style="">
-                    <div class="col-md-10 "style="border:1px solid threedhighlight;height:35px; padding: 5px;margin-top: 10px">
-                        <label>Đề 3</label>
-                    </div>
-                    <div class="col-md-2"  style="margin-top: 10px">
-                        <a href="#" class="btn btn-danger">Xóa</a>
-                    </div>
-                </div>
-
-
             </div>
-
-            <div class="col-md-4 col-md-offset-8 panel panel-body">
+            <div class="col-md-4 col-md-offset-8 panel panel-body" style="margin:-30px 0 0 378px">
                 <button type="submit" class="btn bg-primary" data-toggle="modal" data-target="#myModal">
                     Thêm
                 </button>
@@ -55,31 +38,29 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <label style="size: 22px;font-weight: bold">Upload tập tin</label>
                             </div>
-
-                            <div class="col-md-12 alert alert-info" style="font-weight: bold;text-align: center">
-                                Tiêu đề
-                                <input type="text" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
-                            </div>
-                            <div class="col-md-12 alert alert-success">
-
-                                <input type="file" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Tải lên</button>
-                            </div>
+                            <form action="attach" name="upload" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <input type="text" name="id" value="${id}" style="display: none"/>
+                                <div class="col-md-12 alert alert-success" style="background: none;border: none" >
+                                    <label style="size: 22px;font-weight: normal">Mô tả tập tin</label>
+                                    <input type="text" name="title" value="" class="form-control" />
+                                    <input type="file" name="file" class="form-control" style="margin-top:20px" />
+                                </div>
+                                <div class="modal-footer"  style="border: none">
+                                    <button type="submit" name="action" value="up-load" class="btn btn-primary">Tải lên</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn bg-danger">Xong</button>
+                <form action="attach" name="finish" method="get" accept-charset="UTF-8">
+
+                    <button type="submit" name="action" value="finish" class="btn bg-danger">Xong</button>
+                    <input type="text" name="id" value="${id}"/>
+                </form>
             </div>
-
         </div>
-
-
-
         <script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
         <script src="../js/bootstrap.js" type="text/javascript"></script>
     </body>
