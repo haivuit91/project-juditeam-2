@@ -18,6 +18,10 @@
         <url-pattern>/post</url-pattern>
     </filter-mapping>
     <servlet>
+        <servlet-name>AttachServlet</servlet-name>
+        <servlet-class>controller.servlet.AttachServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Page</servlet-name>
         <servlet-class>controller.servlet.Page</servlet-class>
     </servlet>
@@ -68,6 +72,10 @@
     <servlet-mapping>
         <servlet-name>PostManagement</servlet-name>
         <url-pattern>/postmanage</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>AttachServlet</servlet-name>
+        <url-pattern>/attach</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CommentServlet</servlet-name>
