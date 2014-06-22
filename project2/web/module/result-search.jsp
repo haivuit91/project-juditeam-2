@@ -27,12 +27,12 @@
             <table class="col-md-12 table-hover" style="margin-top: 10px">
                 <c:forEach items="${result_search}" var="item">
                     <!--Kết qua 1-->
-                    <tr style="border-bottom: #999999 solid thin">
+                    <tr style="border-bottom: #e1e3e3 solid thin">
                         <td class="col-md-12 alert alert-info">
                             <p style="font-weight: bold"><span class="glyphicon glyphicon-fast-forward"></span> &nbsp;<a href="detail?action=view&id=${item.postID}">${item.title}</a></p>  
                         </td>
                     </tr>
-                    <tr style="border-bottom: #222 solid thin">
+                    <tr style="border-bottom: #e1e3e3 solid thin">
                         <td class="col-md-12">
                             <p style="font-weight: bold">
                                 Tóm tắt:
@@ -42,14 +42,14 @@
                             </p>
                         </td>
                     </tr>
-                    <tr style="border-bottom: #222 solid thin">
+                    <tr style="border-bottom: #e1e3e3 solid thin">
                         <td class="col-md-12">
                             <p style="font-weight: bold">
                                 Ngày đăng : ${item.datePost}
                             </p>
                         </td>
                     </tr>
-                    <tr style="border-bottom: #222 solid thin">
+                    <tr style="border-bottom: #e1e3e3 solid thin">
                         <td class="col-md-12">
                             <p style="font-weight:">
                                 <b>Liên kết:</b> <a href="${item.link}">${item.link}</a>
@@ -71,16 +71,20 @@
             </c:forEach>
         </c:if>
         <!--paging default -->
-        <c:if test="${action == 'load-default'}">
-            <c:forEach begin="1" end="${total_page}" var="i">
-                <c:if test="${current_page != i}">
-                    <a href="index?page=${i}" >${i}</a>
-                </c:if>
-                <c:if test="${current_page == i}">
-                    ${i}
-                </c:if>
-            </c:forEach>
-        </c:if>
+        <div class="col-md-12 alert alert-info" style="text-align: center" >
+            <c:if test="${action == 'load-default'}">
+                <c:forEach begin="1" end="${total_page}" var="i">
+                    <c:if test="${current_page != i}">
+
+                        <a  class="label label-primary"href="index?page=${i}" >${i}</a>
+
+                    </c:if>
+                    <c:if test="${current_page == i}">
+                        <b class="label label-warning"> ${i}</b>
+                    </c:if>
+                </c:forEach>
+            </c:if>
+        </div>
 
         <!--end paging -->
 
