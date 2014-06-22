@@ -28,7 +28,13 @@ eated on : Jun 12, 2014, 7:14:09 AM
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="/project2/index">TRA CỨU THÔNG TIN</a><br>
+                    <b style="color: white;text-align: center">
+                        WEB TRA CỨU THÔNG TIN
+                    </b>
+                    <br>
+                    <b style="color: white;font-size:130%;text-align: center">
+                        ÔN THI TỐT NGHIỆP
+                    </b>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
