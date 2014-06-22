@@ -20,7 +20,7 @@ public class Support {
     }
 
     public static String marker(String resource, String keySearch) {
-        if (keySearch != null) {
+        if (keySearch != null && resource!= null) {
             return resource.replaceAll(keySearch, " <span class=\"marker\">" + keySearch + "</span>");
         }
         return resource;

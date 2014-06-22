@@ -63,10 +63,10 @@
                 </c:forEach>
             </table>
             <!-- paging for search-->
-            <div class="col-md-12 alert alert-info" style="text-align: center; background:white" >
+            <div class="col-md-12 alert alert-info" style="text-align: center; background:white; border: none" >
                 <c:forEach begin="1" end="${total_page}" var="i">
                     <c:if test="${current_page != i}">
-                        <a   class="label label-primary" href="postmanage?action=${key_search == null ? 'load':'search'}${key_search == null ? '':'&key-search='}${key_search}&page=${i}">${i}</a>
+                        <a  class="label label-primary" href="postmanage?action=${key_search == null ? 'load':'search'}${key_search == null ? '':'&key-search='}${key_search}&page=${i}">${i}</a>
                     </c:if>
                     <c:if test="${current_page == i}">
                         <b class="label label-warning">${i}</b>

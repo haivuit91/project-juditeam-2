@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.dao.AttachDAO;
 import model.dao.CategoryDAO;
+import model.dao.PostDAO;
 import model.dao.service.AttachDAOService;
+import model.dao.service.PostDAOService;
 import model.entities.Attach;
 import model.entities.Category;
 import model.entities.Post;
@@ -72,6 +74,7 @@ public class AttachServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        PostDAOService postService = PostDAO.getInstance();
         String title = null;
         String action = null;
         // String pathImage;
@@ -115,14 +118,16 @@ public class AttachServlet extends HttpServlet {
                     }
                 }
             }
-            System.out.println("post id"+ postID);
             Post post = new Post();
             post.setPostID(postID);
-            Attach attach = new Attach(0, title,imageName, post, true);
+            Attach attach = new Attach(0, title,"file\\attach\\"+imageName, post, true);
             if (action != null) {
                 switch (action) {
                     case "up-load":
                         upLoad(request, response, attach);
+                        break;
+                    case "finish":
+                        finish(request, response,postID);
                         break;
                 }
             }
@@ -130,7 +135,16 @@ public class AttachServlet extends HttpServlet {
             response.getWriter().println(e.toString());
         }
     }
-
+    private void finish(HttpServletRequest request, HttpServletResponse response,int postID) throws ServletException, IOException {
+       
+        PostDAOService postService = PostDAO.getInstance();
+        Post post = new Post();
+        post.setPostID(postID);
+        post.setActive(true);
+        if(postService.activePost(post)){
+            response.sendRedirect("postmanage?action=preview&id=" + postID);
+        }
+    }
     private void upLoad(HttpServletRequest request, HttpServletResponse response,Attach attach) {
         AttachDAOService attachServie = AttachDAO.getInstance();
         if(!attachServie.insertAttach(attach))

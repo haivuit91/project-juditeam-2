@@ -30,7 +30,7 @@
                     </c:forEach>
                 </div>
             </div>
-            <div class="col-md-4 col-md-offset-8 panel panel-body" style="margin:-30px 0 0 378px">
+            <div class="col-md-4 col-md-offset-8 panel panel-body" style="margin:-20px 0 0 340px">
                 <button type="submit" class="btn bg-primary" data-toggle="modal" data-target="#myModal">
                     Thêm
                 </button>
@@ -54,10 +54,9 @@
                         </div>
                     </div>
                 </div>
-                <form action="attach" name="finish" method="get" accept-charset="UTF-8">
-
-                    <button type="submit" name="action" value="finish" class="btn bg-danger">Xong</button>
-                    <input type="text" name="id" value="${id}"/>
+                <form action="attach" name="finish" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                    <button type="submit" name="action" value="finish" class="btn bg-danger" style="margin:-56px 0 0 80px">Hoàn tất</button>
+                    <input type="text" name="id" value="${id}" style="display: none"/>
                 </form>
             </div>
         </div>
