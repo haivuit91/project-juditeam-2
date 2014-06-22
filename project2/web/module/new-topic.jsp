@@ -5,6 +5,7 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,9 +17,35 @@
                 padding:80px 0px;
             }
         </style>
+        <script>
+            function Tieude() {
+                var text = document.newtopic.title.value;
+                var dodai = text.length;
+                var rutgon = text.charAt(0);
+
+//                if (text == "") {
+//                    document.form.title.focus();
+//                    document.getElementById("errorBox").innerHTML = "Bạn chưa nhập tiêu đề";
+//                    return false;
+//                }
+
+                for (var i = 0; i < dodai; i++)
+                {
+                    if (text.charAt(i) == " ")
+                    {
+                        rutgon += text.charAt(i + 1);
+                    }
+                }
+
+                var thuong = rutgon.toLowerCase();
+                var elem = document.getElementById("inputEmail30");
+                elem.value = thuong;
+                return true;
+            }
+        </script>
     </head>
     <body>
-        <form action="post" name="newtopic" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+        <form action="post" name="newtopic" method="post" enctype="multipart/form-data" accept-charset="UTF-8" onsubmit="return agree();">
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-body" style="text-align: center">
@@ -31,7 +58,7 @@
                             <label>Tên tiêu đề</label>
                         </div>
                         <div class="col-md-12" >
-                            <input type="text" name="title" value="${current_post.title}" class="form-control" id="inputEmail3" >
+                            <input type="text" name="title" value="${current_post.title}" class="form-control" id="inputEmail3" onblur="Tieude()">
                         </div>
                     </div>  
                     <div class="form-group">
@@ -39,7 +66,7 @@
                             <label>Tên rút gọn</label>
                         </div>
                         <div class="col-md-12" >
-                            <input type="text" name="short-title" value="${current_post.shortTitle}" class="form-control" id="inputEmail3" >
+                            <input type="text" name="short-title" value="${current_post.shortTitle}" class="form-control" id="inputEmail30" onblur="Tieude()">
                         </div>
                     </div>   
                     <div class="form-group">
@@ -59,7 +86,7 @@
                             <label>Nôi dung</label>
                         </div>
                         <div class="col-md-12" >
-                            <textarea class="form-control" name="content" rows="30">${current_post.content}</textarea>
+                            <textarea id="editor1" class="form-control" name="content" rows="30">${current_post.content}</textarea>
                         </div>
                     </div>  
                     <div class="form-group">
@@ -99,5 +126,6 @@
                 </div>
             </div>
         </form>
+        <ckeditor:replace replace="editor1" basePath="/JudiBlog/ckeditor/" />
     </body>
 </html>
