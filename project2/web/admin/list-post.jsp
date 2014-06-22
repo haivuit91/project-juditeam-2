@@ -62,14 +62,16 @@
                 </c:forEach>
             </table>
             <!-- paging for search-->
-            <c:forEach begin="1" end="${total_page}" var="i">
-                <c:if test="${current_page != i}">
-                    <a href="postmanage?action=${key_search == null ? 'load':'search'}${key_search == null ? '':'&key-search='}${key_search}&page=${i}">${i}</a>
-                </c:if>
-                <c:if test="${current_page == i}">
-                    ${i}
-                </c:if>
-            </c:forEach>
+            <div class="col-md-12 alert alert-info" style="text-align: center; background:white" >
+                <c:forEach begin="1" end="${total_page}" var="i">
+                    <c:if test="${current_page != i}">
+                        <a   class="label label-primary" href="postmanage?action=${key_search == null ? 'load':'search'}${key_search == null ? '':'&key-search='}${key_search}&page=${i}">${i}</a>
+                    </c:if>
+                    <c:if test="${current_page == i}">
+                        <b class="label label-warning">${i}</b>
+                    </c:if>
+                </c:forEach>
+            </div>
         </div>
     </body>
 </html>
