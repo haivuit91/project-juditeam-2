@@ -70,6 +70,7 @@ public class PostServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        PostDAOService postService = PostDAO.getInstance();
         String title = null;
         String shortTitle = null;
         String sCategoryID = null;
@@ -87,10 +88,10 @@ public class PostServlet extends HttpServlet {
                 if (fileItemStream.isFormField()) {
                     String fieldName = fileItemStream.getFieldName();
                     InputStream is = fileItemStream.openStream();
-                    
+
                     byte[] b = new byte[is.available()];
                     is.read(b);
-                    String value = new String(b,"UTF-8");
+                    String value = new String(b, "UTF-8");
                     if (fieldName.equals("action")) {
                         action = value;
                     }
@@ -128,6 +129,7 @@ public class PostServlet extends HttpServlet {
                 }
             }
             Post currentPost = new Post();
+            currentPost.setPostID(postService.nextID());
             currentPost.setTitle(title);
             currentPost.setShortTitle(shortTitle);
             currentPost.setCategory(new Category(Integer.valueOf(sCategoryID), "", false));
@@ -156,13 +158,13 @@ public class PostServlet extends HttpServlet {
     private void addTopic(HttpServletRequest request, HttpServletResponse response, Post post) throws ServletException, IOException {
         PostDAOService postService = PostDAO.getInstance();
         if (postService.insertPost(post)) {
-            request.setAttribute(Constants.MSG_RESULT, "Đã thêm");
+            response.sendRedirect("attach?action=load&id="+ post.getPostID());
         } else {
             request.setAttribute(Constants.CURRENT_POST, post);
             request.setAttribute(Constants.MSG_RESULT, "Lỗi");
+            request.setAttribute(Constants.PAGE, "new-topic");
+            request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
         }
-        request.setAttribute(Constants.PAGE, "new-topic");
-        request.getRequestDispatcher(Constants.URL_HOME).forward(request, response);
     }
 
     private void upLoad(HttpServletRequest request, HttpServletResponse response, String imagName, Boolean isSuccess) throws ServletException, IOException {
