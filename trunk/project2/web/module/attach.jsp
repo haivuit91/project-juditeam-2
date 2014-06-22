@@ -19,24 +19,31 @@
         </div>
         <div class="col-md-6 col-md-offset-3" style="border:2px solid #269abc">
             <div class="col-md-12 panel panel-body">
-                <div class="col-md-10">
-                    <label>Đề 1</label>
+                <div class="form-group" style="">
+                    <div class="col-md-10 "style="border:1px solid threedhighlight;height:35px; padding: 5px;margin-top: 10px">
+                        <label>Đề 1</label>
+                    </div>
+                    <div class="col-md-2"  style="margin-top: 10px">
+                        <a href="#" class="btn btn-danger">Xóa</a>
+                    </div>
                 </div>
-                <div class="col-md-2" style="margin-top:10px" >
-                    <a href="#" class="btn btn-danger">Xóa</a>
+                <div class="form-group" style="">
+                    <div class="col-md-10 "style="border:1px solid threedhighlight;height:35px; padding: 5px;margin-top: 10px">
+                        <label>Đề 2</label>
+                    </div>
+                    <div class="col-md-2"  style="margin-top: 10px">
+                        <a href="#" class="btn btn-danger">Xóa</a>
+                    </div>
                 </div>
-                <div class="col-md-10">
-                    <label>Đề 1</label>
+                <div class="form-group" style="">
+                    <div class="col-md-10 "style="border:1px solid threedhighlight;height:35px; padding: 5px;margin-top: 10px">
+                        <label>Đề 3</label>
+                    </div>
+                    <div class="col-md-2"  style="margin-top: 10px">
+                        <a href="#" class="btn btn-danger">Xóa</a>
+                    </div>
                 </div>
-                <div class="col-md-2" style="margin-top:10px" >
-                    <a href="#" class="btn btn-danger">Xóa</a>
-                </div>
-                <div class="col-md-10">
-                    <label>Đề 1</label>
-                </div>
-                <div class="col-md-2" style="margin-top:10px" >
-                    <a href="#" class="btn btn-danger">Xóa</a>
-                </div>
+
 
             </div>
 
