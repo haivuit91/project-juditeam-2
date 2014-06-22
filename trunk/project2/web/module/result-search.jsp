@@ -71,7 +71,7 @@
             </c:forEach>
         </c:if>
         <!--paging default -->
-        <div class="col-md-12 alert alert-info" style="text-align: center" >
+        <div class="col-md-12 alert alert-info" style="text-align: center; background:white">
             <c:if test="${action == 'load-default'}">
                 <c:forEach begin="1" end="${total_page}" var="i">
                     <c:if test="${current_page != i}">
