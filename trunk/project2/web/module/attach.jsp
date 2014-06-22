@@ -20,28 +20,28 @@
         <div class="col-md-6 col-md-offset-3" style="border:2px solid #269abc">
             <div class="col-md-12 panel panel-body">
                 <div class="col-md-10">
-                    <input type="file" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
+                    <label>Đề 1</label>
                 </div>
-                <div class="col-md-2"style="margin-top:10px" >
+                <div class="col-md-2" style="margin-top:10px" >
                     <a href="#" class="btn btn-danger">Xóa</a>
                 </div>
                 <div class="col-md-10">
-                    <input type="file" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
+                    <label>Đề 1</label>
                 </div>
-                <div class="col-md-2"style="margin-top:10px" >
+                <div class="col-md-2" style="margin-top:10px" >
                     <a href="#" class="btn btn-danger">Xóa</a>
                 </div>
                 <div class="col-md-10">
-                    <input type="file" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
+                    <label>Đề 1</label>
                 </div>
-                <div class="col-md-2"style="margin-top:10px" >
+                <div class="col-md-2" style="margin-top:10px" >
                     <a href="#" class="btn btn-danger">Xóa</a>
                 </div>
 
             </div>
 
             <div class="col-md-4 col-md-offset-8 panel panel-body">
-                <button type="submit"class="btn bg-primary"data-toggle="modal" data-target="#myModal">
+                <button type="submit" class="btn bg-primary" data-toggle="modal" data-target="#myModal">
                     Thêm
                 </button>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -65,12 +65,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-                <button type="submit"class="btn bg-danger">Xong</button>
+                <button type="submit" class="btn bg-danger">Xong</button>
             </div>
 
         </div>
