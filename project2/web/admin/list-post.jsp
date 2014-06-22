@@ -42,7 +42,7 @@
                 </div><!-- /.row -->
             </div>
             <table class="col-md-12 table-hover">
-                <tr style="font-weight: bold;text-transform: uppercase">
+                <tr style="font-weight: bold;text-transform: uppercase;background: #2aabd2">
                     <td class="col-md-3">Tiêu đề</td>
                     <td class="col-md-2">Ngày đăng</td>
                     <td class="col-md-2">Danh mục</td>
