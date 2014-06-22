@@ -60,9 +60,10 @@
 
                             <div class="col-md-12 alert alert-info" style="font-weight: bold;text-align: center">
                                 Tiêu đề
+                                <input type="text" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
                             </div>
                             <div class="col-md-12 alert alert-success">
-                                <input type="text" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
+
                                 <input type="file" name="link" value="" class="form-control" id="inputEmail3" style="margin-top:10px" />
                             </div>
 
