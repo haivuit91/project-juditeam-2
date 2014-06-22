@@ -28,11 +28,11 @@ eated on : Jun 12, 2014, 7:14:09 AM
                         <span class="icon-bar"></span>
                     </button>
 
-                    <b style="color: wheat;text-align: center">
-                        TRA CỨU THÔNG TIN
+                    <b style="color: white;text-align: center">
+                        WEB TRA CỨU THÔNG TIN
                     </b>
                     <br>
-                    <b style="color: wheat;font-size:120%;text-align: center">
+                    <b style="color: white;font-size:130%;text-align: center">
                         ÔN THI TỐT NGHIỆP
                     </b>
 
