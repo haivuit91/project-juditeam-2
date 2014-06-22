@@ -130,5 +130,5 @@ public interface PostDAOService {
      * @return true if exit
      */
     boolean exitPost(Post post);
-
+    int nextID();
 }

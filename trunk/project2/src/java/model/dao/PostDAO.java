@@ -427,16 +427,6 @@ public class PostDAO implements PostDAOService {
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
-//                Post post = new Post();
-//                post.setTitle(rs.getString("title"));
-//                post.setShortTitle(rs.getString("shortTitle"));
-//                post.setContent(rs.getString("content"));
-//                post.setDatePost(rs.getDate("datePost"));
-//                User user = UserDAO.getInstance().getUserByUserID(rs.getInt("userID"));
-//                post.setUser(user);
-//                Category category = CategoryDAO.getInstance().getCategoryByID(rs.getInt("categoryID"));
-//                post.setCategory(category);
-//                post.setActive(true);
                 listPost.add(getItem(rs));
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -462,5 +452,22 @@ public class PostDAO implements PostDAOService {
             System.out.println(ex.getStackTrace());
         }
         return listPost;
+    }
+
+    @Override
+    public int nextID() {
+         String sql = "SELECT AUTO_INCREMENT as 'next' FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'db_math' AND TABLE_NAME = 'tbl_post'";
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement sm = conn.prepareStatement(sql);
+           
+            ResultSet rs = sm.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("next");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PostDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }
