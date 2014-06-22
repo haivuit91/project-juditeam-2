@@ -59,7 +59,7 @@
                             <label>Nôi dung</label>
                         </div>
                         <div class="col-md-12" >
-                            <textarea class="form-control" name="content" rows="5">${current_post.content}</textarea>
+                            <textarea class="form-control" name="content" rows="30">${current_post.content}</textarea>
                         </div>
                     </div>  
                     <div class="form-group">

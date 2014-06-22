@@ -40,13 +40,13 @@
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
             </div>
-            <table>
+            <table class="col-md-12 table-hover">
                 <tr>
-                    <td>Tiêu đề</td>
-                    <td>Liên kết</td>
-                    <td>Ngày đăng</td>
-                    <td>Danh mục</td>
-                    <td colspan="2">Thao tác</td>
+                    <td class="col-ms-3">Tiêu đề</td>
+                    <td class="col-ms-2">Liên kết</td>
+                    <td class="col-ms-2">Ngày đăng</td>
+                    <td class="col-ms-3">Danh mục</td>
+                    <td colspan="2"class="col-ms-2">Thao tác</td>
                 </tr>
                 <c:forEach items="${list_post}" var="item">
                     <tr>
