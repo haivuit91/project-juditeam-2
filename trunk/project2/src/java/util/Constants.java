@@ -58,4 +58,5 @@ public class Constants {
     public static final String LIST_POST = "list_post";
     public static final String RESULT_UPLOAD = "result_upload";
     public static final String URL_IMAGE = "url_image";
+    public static final String LIST_ATTACH = "list_attach";
 }
