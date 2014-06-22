@@ -10,11 +10,11 @@ eated on : Jun 12, 2014, 7:14:09 AM
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang chủ</title>
-        <script src="js/script.js" type="text/javascript"> </script>
-         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
-         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="js/script.js" type="text/javascript"></script>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
-    
+
     <body>
         <!--Header-->
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -28,7 +28,15 @@ eated on : Jun 12, 2014, 7:14:09 AM
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="/project2/index">TRA CỨU THÔNG TIN</a><br>
+                    <b style="color: wheat;text-align: center">
+                        TRA CỨU THÔNG TIN
+                    </b>
+                    <br>
+                    <b style="color: wheat;font-size:120%;text-align: center">
+                        ÔN THI TỐT NGHIỆP
+                    </b>
+
+
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -47,7 +55,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
                 </div><!--/.nav-collapse -->
             </div>
         </div>
-  
+
         <!--Content Seacher-->
         <c:if test="${p == 'login' || p == null}">
             <%@include file="module/seach-cb.jsp" %>
@@ -64,7 +72,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
                 <%@include file="module/result-search.jsp" %>
             </div>  
         </c:if>
-       <c:if test="${p == 'view-post'}">
+        <c:if test="${p == 'view-post'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
                 <%@include file="module/view-topic.jsp" %>
