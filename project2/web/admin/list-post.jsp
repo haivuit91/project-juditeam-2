@@ -11,9 +11,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+
     </head>
     <body>
-        <div class="alert alert-danger" style="text-align: center"><b>QUẢN LÝ BÀI VIẾT </b></div>
+        <div class="alert alert-danger" style="text-align: center;margin-top: 40px"><b>QUẢN LÝ BÀI VIẾT </b></div>
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
