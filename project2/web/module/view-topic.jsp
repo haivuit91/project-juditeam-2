@@ -22,27 +22,25 @@
                         ${current_post.content}
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3 col-md-offset-12">
                     <c:forEach items="${current_post.attachList}" var="item">
                         <div class="alert-info">
                             <a href="${item.path}">${item.title}</a> 
                         </div>
                     </c:forEach>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-12">
                     <div class="alert-danger" style="margin-left: 5px">
-                        Đăng bởi: ${current_post.user.userName}
+                        Đăng bởi: <b>${current_post.user.userName}</b>
                     </div>
                     <div class="alert-danger" style="margin-left: 5px">
-                        Ngày: ${current_post.datePost}
+                        Ngày: <i>${current_post.datePost}</i>
                     </div>
                 </div>
-                        <c:forEach items="${current_post.commentList}" var="item">
-                            ${item.content}
-                        </c:forEach>
-                <div class="col-md-3">
+
+                <div class="col-md-3 col-md-offset-9" style="margin-top:10px">
                     <!-- Large modal -->
-                    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Gửi bình luận</button>
                     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -65,7 +63,16 @@
                     </div>
 
                 </div>
+
+                <textarea class="col-md-12 panel panel-primary" disabled style="margin-top: 10px;min-height:300px">
+                    <c:forEach items="${current_post.commentList}" var="item">${item.content}
+                    </c:forEach>
+                </textarea>
+
             </div>
+
+
+
             <div class="col-md-2 ">
                 <div class="col-md-12 alert-success" style="font-weight: bold;text-align: center">
                     <p>
