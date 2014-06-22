@@ -126,6 +126,6 @@
                 </div>
             </div>
         </form>
-        <ckeditor:replace replace="editor1" basePath="/JudiBlog/ckeditor/" />
+        <ckeditor:replace replace="editor1" basePath="/project2/ckeditor/" />
     </body>
 </html>
