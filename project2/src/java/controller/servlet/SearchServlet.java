@@ -57,12 +57,11 @@ public class SearchServlet extends HttpServlet {
         PostDAOService postService = PostDAO.getInstance();
         List<Post> listResource = null;
         int catID = Integer.valueOf("id");
-        String keySearch = request.getParameter("key_search");
         listResource = postService.getPostByCatID(catID);
         request.setAttribute(Constants.TOTAL_RESULT, listResource.size());
         request.setAttribute(Constants.PAGE, "search-cb");
         request.setAttribute(Constants.ACTION, "search-cb");
-        paging(request, response, listResource, keySearch);
+        paging(request, response, listResource, null);
     }
 
     private void searchCB(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
