@@ -90,11 +90,11 @@
             </div>
             <div class="col-md-3 alert-info" style="position: fixed; margin-left: 780px">
                 <center>
-                    <img class="img-thumbnail" style="width:180px;height:180px;margin-top:80px" src="${url_image}">                
+                    <img class="img-thumbnail" style="width:300px;height:300px; margin-top: 18px" src="image/post/EGxI2I2y.png">                
                 </center>
                 <input type="file" name="file" class="btn btn-default" style="margin-top:10px; width: 308px"/>
                 <input type="text" value="${url_image}" class="form-control" style="margin-top: 5px" placeholder="Link ảnh"/>
-                <div class="col-md-4 col-md-offset-8" style="margin-top: 10px;margin-bottom: 20px">
+                <div class="col-md-4 col-md-offset-8" style="margin-top: 10px;margin-bottom: 10px;margin-left: 220px">
                     <button type="submit" name="action" value="up-load" class="btn bg-primary">Tải lên</button>
                 </div>
             </div>
