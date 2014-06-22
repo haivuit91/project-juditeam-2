@@ -168,7 +168,7 @@ public class PostServlet extends HttpServlet {
     private void upLoad(HttpServletRequest request, HttpServletResponse response, String imagName, Boolean isSuccess) throws ServletException, IOException {
         if (isSuccess) {
             request.setAttribute(Constants.RESULT_UPLOAD, "Hình ảnh đã được tải lên");
-            request.setAttribute(Constants.URL_IMAGE, "http://localhost:8084/project2/image/post/" + imagName);
+            request.setAttribute(Constants.URL_IMAGE, "image/post/" + imagName);
         } else {
             request.setAttribute(Constants.RESULT_UPLOAD, "Lỗi");
         }

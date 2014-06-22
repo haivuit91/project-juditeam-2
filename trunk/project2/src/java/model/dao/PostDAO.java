@@ -147,7 +147,7 @@ public class PostDAO implements PostDAOService {
     public boolean insertPost(Post post
     ) {
         boolean isCheck = false;
-        String sql = "insert into tbl_post (title,shortTitle,content,summary,datePost,userID,categoryID,isActive) values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into tbl_post (title,shortTitle,content,summary,datePost,link,userID,categoryID,isActive) values(?,?,?,?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -156,9 +156,10 @@ public class PostDAO implements PostDAOService {
             pstmt.setString(3, post.getContent());
             pstmt.setString(4, post.getSummary());
             pstmt.setDate(5, (Date) post.getDatePost());
-            pstmt.setInt(6, post.getUser().getUserID());
-            pstmt.setInt(7, post.getCategory().getCategoryID());
-            pstmt.setBoolean(8, post.isActive());
+            pstmt.setString(6, post.getLink());
+            pstmt.setInt(7, post.getUser().getUserID());
+            pstmt.setInt(8, post.getCategory().getCategoryID());
+            pstmt.setBoolean(9, post.isActive());
             return pstmt.executeUpdate() == 1;
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
@@ -450,7 +451,7 @@ public class PostDAO implements PostDAOService {
         try {
             Connection conn = ConnectionFactory.getConnection();
             String sql = "select * from tbl_post where (summary like '%" + keySearch + "%' or title like '%" + keySearch + "%') and categoryID=" + catID + " ";
-            System.out.println("sql: "+ sql);
+            System.out.println("sql: " + sql);
             Statement sm = conn.createStatement();
             ResultSet rs = sm.executeQuery(sql);
             System.out.println(sql);

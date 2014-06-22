@@ -23,7 +23,7 @@ public class Constants {
     /**
      * Password of Admin's Email
      */
-    public static final int defaultOffset = 2;
+    public static final int defaultOffset = 10;
     public static final String PASSWORD_EMAIL = "congtrinh";
 
     public static final String URL_HOME = "home.jsp";
