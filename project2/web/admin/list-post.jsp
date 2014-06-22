@@ -41,21 +41,23 @@
                 </div><!-- /.row -->
             </div>
             <table class="col-md-12 table-hover">
-                <tr>
-                    <td class="col-ms-3">Tiêu đề</td>
-                    <td class="col-ms-2">Liên kết</td>
-                    <td class="col-ms-2">Ngày đăng</td>
-                    <td class="col-ms-3">Danh mục</td>
-                    <td colspan="2"class="col-ms-2">Thao tác</td>
+                <tr style="font-weight: bold;text-transform: uppercase">
+                    <td class="col-md-3">Tiêu đề</td>
+                    <td class="col-md-2">Ngày đăng</td>
+                    <td class="col-md-1">Danh mục</td>
+                    <td class="col-md-4">Liên kết</td>
+                    <td class="col-md-2">Thao tác</td>
                 </tr>
                 <c:forEach items="${list_post}" var="item">
-                    <tr>
-                        <td>${item.title}</td>
-                        <td>${item.link == null ? '#':item.link }</td>
-                        <td>${item.datePost}</td>
-                        <td>${item.getCategory().categoryName}</td>
-                        <td><a href="postmanage?action=del&id=${item.postID}">Xóa</a></td>
-                        <td><a href="postmanage?action=${item.isActive() ? "disable":"enable"}&id=${item.postID}">${item.isActive() ? "Ẩn":"Hiện"}</a></td>
+                    <tr style="border-bottom:#E8E6E7 solid thin">
+                        <td class="col-md-3">${item.title}</td>
+                        <td class="col-md-2">${item.datePost}</td>
+                        <td class="col-md-1">${item.getCategory().categoryName}</td>
+                        <td class="col-md-4">${item.link == null ? '#':item.link }</td>
+                        <td class="col-md-2">
+                            <a  class="btn btn-warning" href="postmanage?action=del&id=${item.postID}">Xóa</a>
+                            <a class="btn btn-primary" href="postmanage?action=${item.isActive() ? "disable":"enable"}&id=${item.postID}">${item.isActive() ? "Ẩn":"Hiện"}</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
