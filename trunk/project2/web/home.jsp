@@ -79,6 +79,9 @@ eated on : Jun 12, 2014, 7:14:09 AM
                 <c:if test="${p == 'login-logout' }">
                     <%@include file="module/login-logout.jsp" %>
                 </c:if>     
+                <c:if test="${p == 'attach' }">
+                    <%@include file="module/attach.jsp" %>
+                </c:if>     
                 <c:if test="${p == 'login' || p == null}">
                     <%@include file="module/result-search.jsp" %>
                 </c:if>
