@@ -75,7 +75,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
         <c:if test="${p == 'view-post'}">
             <%@include file="module/seach-cb.jsp" %>
             <div class="container">
-                <%@include file="module/view-topic.jsp" %>
+                <%@include file="module/view-topic2.jsp" %>
             </div>
         </c:if>
         <!--Content Information-->
