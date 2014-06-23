@@ -27,21 +27,22 @@ eated on : Jun 12, 2014, 7:14:09 AM
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <b style="color: white;text-align: center">
-                        WEB TRA CỨU THÔNG TIN
-                    </b>
-                    <br>
-                    <b style="color: white;font-size:130%;text-align: center">
-                        ÔN THI TỐT NGHIỆP
-                    </b>
-
+                    <a href="index">
+                        <b style="color: white;text-align: center">
+                            WEB TRA CỨU THÔNG TIN
+                        </b>
+                        <br>
+                        <b style="color: white;font-size:130%;text-align: center">
+                            ÔN THI TỐT NGHIỆP
+                        </b>
+                    </a>
 
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/project2/index">Trang chủ</a></li>
                             <c:if test="${current_user != null}">
+                            <li><a href="/project2/resource?action=load">Tài nguyên</a></li>
                             <li><a href="/project2/postmanage?action=load">Quản trị</a></li>
                             <li><a href="/project2/post?action=new-topic">Tạo mới</a></li>
                             </c:if>
@@ -89,6 +90,9 @@ eated on : Jun 12, 2014, 7:14:09 AM
                 </c:if>     
                 <c:if test="${p == 'attach' }">
                     <%@include file="module/attach.jsp" %>
+                </c:if>     
+                <c:if test="${p == 'resource' }">
+                    <%@include file="module/resurce.jsp" %>
                 </c:if>     
                 <c:if test="${p == 'login' || p == null}">
                     <%@include file="module/result-search.jsp" %>

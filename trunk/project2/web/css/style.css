@@ -88,6 +88,7 @@ and open the template in the editor.
 }
 #view-wapper #dediter textArea{
     padding: 5px;
+    border-radius: 4px;
 }
 #view-wapper #slide-bar{
     margin-top: -30px;
@@ -96,3 +97,44 @@ and open the template in the editor.
     width: 200px;
     background: #080808;
 }
+/*list post*/
+#list-post-wapper{
+    margin-top: 10px;
+}
+#list-post-wapper table tr.title{
+    text-align: center;
+    font-weight:  bold;
+    font-size: 16px;
+    background: #2aabd2;
+}
+
+#list-post-wapper table td.title {
+    width: 800px;
+    padding: 5px 0;
+}
+
+#list-post-wapper table td.date {
+    width: 220px;
+}
+#list-post-wapper table td.category {
+    width: 220px;
+}
+#list-post-wapper table td.action {
+    width: 120px;
+}
+#list-post-wapper table tr.mrow{
+    font-size: 14px;
+}
+#list-post-wapper table tr.mrow td{
+    padding-left: 10px;
+}
+#list-post-wapper table tr.mrow td.action {
+    text-align: center;
+}
+#list-post-wapper table tr.mrow a{
+    padding: 5px;
+}
+.line{
+     border-bottom: 1px #E0DFE3 solid;
+}
+/*end list post*/

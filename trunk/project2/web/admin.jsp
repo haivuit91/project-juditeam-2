@@ -27,14 +27,15 @@ eated on : Jun 12, 2014, 7:14:09 AM
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <b style="color: white;text-align: center">
-                        WEB TRA CỨU THÔNG TIN
-                    </b>
-                    <br>
-                    <b style="color: white;font-size:130%;text-align: center">
-                        ÔN THI TỐT NGHIỆP
-                    </b>
+                    <a href="index">
+                        <b style="color: white;text-align: center">
+                            WEB TRA CỨU THÔNG TIN
+                        </b>
+                        <br>
+                        <b style="color: white;font-size:130%;text-align: center">
+                            ÔN THI TỐT NGHIỆP
+                        </b>
+                    </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">

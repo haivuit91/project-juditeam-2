@@ -31,7 +31,7 @@
 
                 for (var i = 0; i < dodai; i++)
                 {
-                    if (text.charAt(i) == " ")
+                    if (text.charAt(i) === " ")
                     {
                         rutgon += text.charAt(i + 1);
                     }
@@ -86,7 +86,7 @@
                             <label>Nôi dung</label>
                         </div>
                         <div class="col-md-12" >
-                            <textarea id="editor1" class="form-control" name="content" rows="30">${current_post.content}</textarea>
+                            <textarea id="editor1" class="form-control" name="content" rows="80">${current_post.content}</textarea>
                         </div>
                     </div>  
                     <div class="form-group">

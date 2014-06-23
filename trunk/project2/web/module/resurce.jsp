@@ -19,7 +19,7 @@
 
         <table class="col-md-8 col-md-offset-2 tab-pane">
             <tr class="col-md-12 label-warning" style="border-bottom:#EDEDED solid thin;">
-                <td class="col-md-3"style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
+                <td class="col-md-3" style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
                     <a href="#"> Bài tập</a>
                 </td>
                 <td class="col-md-9" style="padding-top: 5px">
@@ -30,7 +30,7 @@
             </tr>
 
             <tr class="col-md-12 alert-success" style="border-bottom:#EDEDED solid thin;">
-                <td class="col-md-3"style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
+                <td class="col-md-3" style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
                     <a href="#"> Lý thuyết</a>
                 </td>
                 <td class="col-md-9">
@@ -40,7 +40,7 @@
                 </td>
             </tr>
             <tr class="col-md-12 alert-info" style="border-bottom:#EDEDED solid thin;">
-                <td class="col-md-3"style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
+                <td class="col-md-3" style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
                     <a href="#">  Tài liệu</a>
                 </td>
                 <td class="col-md-9">
@@ -50,7 +50,7 @@
                 </td>
             </tr>
             <tr class="col-md-12 alert-success" style="border-bottom:#EDEDED solid thin;">
-                <td class="col-md-3"style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
+                <td class="col-md-3" style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
                     <a href="#"> Hướng dẫn</a>
                 </td>
                 <td class="col-md-9">
@@ -60,7 +60,7 @@
                 </td>
             </tr>
             <tr class="col-md-12 alert-info" style="border-bottom:#EDEDED solid thin;">
-                <td class="col-md-3"style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
+                <td class="col-md-3" style="border-right:  2px solid #EDEDED;min-width: 200px;font-size: 1.2em">
                     <a href="#"> Kinh nghiệm</a>
                 </td>
                 <td class="col-md-9">

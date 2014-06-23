@@ -60,24 +60,24 @@
             </table>
         </div>
         <!--paging seach -->
-        <c:if test="${action == 'search-cb'}">
-            <c:forEach begin="1" end="${total_page}" var="i">
-                <c:if test="${current_page != i}">
-                    <a href="search?key_search=${key_search}&action=search-cb&page=${i}" >${i}</a>
-                </c:if>
-                <c:if test="${current_page == i}">
-                    ${i}
-                </c:if>
-            </c:forEach>
-        </c:if>
+        <div class="col-md-12 alert alert-info" style="text-align: center; background:white;border: none">
+            <c:if test="${action == 'search-cb'}">
+                <c:forEach begin="1" end="${total_page}" var="i">
+                    <c:if test="${current_page != i}">
+                        <a class="label label-primary" href="search?key_search=${key_search}&action=search-cb&page=${i}" >${i}</a>
+                    </c:if>
+                    <c:if test="${current_page == i}">
+                        <b class="label label-warning"> ${i}</b>
+                    </c:if>
+                </c:forEach>
+            </c:if>
+        </div>
         <!--paging default -->
-        <div class="col-md-12 alert alert-info" style="text-align: center; background:white">
+        <div class="col-md-12 alert alert-info" style="text-align: center; background:white; border: none">
             <c:if test="${action == 'load-default'}">
                 <c:forEach begin="1" end="${total_page}" var="i">
                     <c:if test="${current_page != i}">
-
-                        <a  class="label label-primary"href="index?page=${i}" >${i}</a>
-
+                        <a  class="label label-primary" href="index?page=${i}" >${i}</a>
                     </c:if>
                     <c:if test="${current_page == i}">
                         <b class="label label-warning"> ${i}</b>
