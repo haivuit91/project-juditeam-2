@@ -49,6 +49,10 @@
         <servlet-name>CommentServlet</servlet-name>
         <servlet-class>controller.servlet.CommentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResourceServlet</servlet-name>
+        <servlet-class>controller.servlet.ResourceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -73,13 +77,17 @@
         <servlet-name>PostManagement</servlet-name>
         <url-pattern>/postmanage</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AttachServlet</servlet-name>
         <url-pattern>/attach</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CommentServlet</servlet-name>
         <url-pattern>/comment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResourceServlet</servlet-name>
+        <url-pattern>/resource</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

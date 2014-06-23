@@ -33,7 +33,7 @@
                     </c:forEach>
                 </div>
                 <div id="dediter">
-                    <form action="comment" method="post">
+                    <form action="comment" method="post" accept-charset="UTF-8">
                         <input type="text" name="id" readonly value="${current_post.postID}" style="display: none"/>
                         <textarea cols="122" rows="3" name="content" placeholder="Nhập thắc mắc của bạn"></textarea>
                         <button type="submit" value="comment" name="action">Gửi</button>

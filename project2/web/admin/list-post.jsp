@@ -14,7 +14,14 @@
 
     </head>
     <body>
-        <div class="alert alert-danger" style="text-align: center;margin-top: 40px"><b>QUẢN LÝ BÀI VIẾT </b></div>
+        <div class="alert alert-danger" style="text-align: center;margin-top: 60px">
+            <c:if test="${msgResult == null}">
+                <b>QUẢN LÝ BÀI VIẾT</b>
+            </c:if>
+            <c:if test="${msgResult != null}">
+                <b>${msgResult}</b>
+            </c:if>
+        </div>
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
@@ -41,27 +48,29 @@
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
             </div>
-            <table class="col-md-12 table-hover">
-                <tr style="font-weight: bold;text-transform: uppercase;background: #2aabd2">
-                    <td class="col-md-3">Tiêu đề</td>
-                    <td class="col-md-2">Ngày đăng</td>
-                    <td class="col-md-2">Danh mục</td>
-                    <td class="col-md-3">Liên kết</td>
-                    <td class="col-md-2">Thao tác</td>
-                </tr>
-                <c:forEach items="${list_post}" var="item">
-                    <tr style="border-bottom:#E8E6E7 solid thin">
-                        <td class="col-md-3">${item.title}</td>
-                        <td class="col-md-2">${item.datePost}</td>
-                        <td class="col-md-2">${item.getCategory().categoryName}</td>
-                        <td class="col-md-3">${item.link == null ? '#':item.link }</td>
-                        <td class="col-md-2">
-                            <a  class="btn btn-warning" href="postmanage?action=del&id=${item.postID}">Xóa</a>
-                            <a class="btn btn-primary" href="postmanage?action=${item.isActive() ? "disable":"enable"}&id=${item.postID}">${item.isActive() ? "Ẩn":"Hiện"}</a>
-                        </td>
+            <div id="list-post-wapper">
+                <table>
+                    <tr class="title">
+                        <td class="title">Tiêu đề</td>
+                        <td class="category">Danh mục</td>
+                        <td class="date">Ngày đăng</td>
+                        <td class="action">Thao tác</td>
                     </tr>
-                </c:forEach>
-            </table>
+                    <c:forEach items="${list_post}" var="item">
+                        <tr class="mrow">
+                            <td class="title"><a href="detail?action=view&id=${item.postID}">${item.title}</a></td>
+                            <td class="date">${item.getCategory().categoryName}</td>
+                            <td class="category">${item.datePost}</td>
+                            <td class="action">
+                                <a  href="postmanage?action=del&id=${item.postID}">Xóa</a>
+                                <a  href="postmanage?action=${item.isActive() ? "disable":"enable"}&id=${item.postID}">${item.isActive() ? "Ẩn":"Hiện"}</a>
+                            </td>
+                        </tr>
+                        <td class="line" colspan="4"></td>
+                    </c:forEach>
+                </table>
+            </div>
+
             <!-- paging for search-->
             <div class="col-md-12 alert alert-info" style="text-align: center; background:white; border: none" >
                 <c:forEach begin="1" end="${total_page}" var="i">
