@@ -11,16 +11,23 @@ function checkSearchNC(){
     kn = document.getElementById("kinh_nghiem").value;
     if(title ==='' && content==='' && hd==='' && kn ==='' && bt==='')
     {
-       alert("Hãy nhập thông tin cần tìm")
+       alert("Hãy nhập thông tin cần tìm");
        return false;
     }
     return true;
     
 }
+function previewImage(){
+    var fileReader = new FileReader();
+    fileReader.readAsDataURL(document.newtopic.file.files[0]);
+    fileReader.onload = function (oFREvent) {
+        document.getElementById("image").src = oFREvent.target.result;
+    };
+}
 function checkSearchCB(){
     val = document.getElementById("key_search").value;
     if(val === ''){
-         alert("Hãy nhập thông tin cần tìm")
+         alert("Hãy nhập thông tin cần tìm");
          return false;
     }
     return true;

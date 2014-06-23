@@ -13,6 +13,7 @@ eated on : Jun 12, 2014, 7:14:09 AM
         <script src="js/script.js" type="text/javascript"></script>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="js/script.js" type="text/javascript"></script>
     </head>
 
     <body>

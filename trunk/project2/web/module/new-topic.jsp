@@ -117,15 +117,15 @@
             </div>
             <div class="col-md-3 alert-info" style="position: fixed; margin-left: 780px">
                 <center>
-                    <img class="img-thumbnail" style="width:300px;height:300px; margin-top: 18px" src="image/post/EGxI2I2y.png">                
+                    <img class="img-thumbnail" id="image" style="width:300px;height:300px; margin-top: 18px">                
                 </center>
-                <input type="file" name="file" class="btn btn-default" style="margin-top:10px; width: 308px"/>
-                <input type="text" value="${url_image}" class="form-control" style="margin-top: 5px" placeholder="Link ảnh"/>
+                <input type="file" name="file" onchange="previewImage()" class="btn btn-default" style="margin-top:10px; width: 308px"/>
+                <input type="text" value="${url_image}" class="form-control" style="margin-top: 5px" placeholder="Đường dẫn ảnh"/>
                 <div class="col-md-4 col-md-offset-8" style="margin-top: 10px;margin-bottom: 10px;margin-left: 220px">
                     <button type="submit" name="action" value="up-load" class="btn bg-primary">Tải lên</button>
                 </div>
             </div>
         </form>
-        <ckeditor:replace replace="editor1" basePath="/project2/ckeditor/" />
+        <ckeditor:replace replace="editor1" basePath="./ckeditor/" />
     </body>
 </html>
